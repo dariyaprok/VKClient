@@ -35,28 +35,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-CZ-Tlc">
-                                <rect key="frame" x="-26" y="23" width="601" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.22352942819999999" green="0.047058828179999998" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gsy-CZ-Tlc" secondAttribute="height" multiplier="1:1" id="Mvl-JN-y26"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gsy-CZ-Tlc" firstAttribute="width" secondItem="z2Y-o2-hTB" secondAttribute="width" id="2Ut-mB-UPV"/>
+                            <constraint firstAttribute="width" secondItem="Gsy-CZ-Tlc" secondAttribute="height" multiplier="1:1" id="5GR-lR-Q8e"/>
                             <constraint firstAttribute="centerY" secondItem="Gsy-CZ-Tlc" secondAttribute="centerY" constant="-23" id="9fk-uh-apI"/>
+                            <constraint firstAttribute="centerX" secondItem="Gsy-CZ-Tlc" secondAttribute="centerX" id="TgD-Z3-X7Y"/>
                             <constraint firstAttribute="centerX" secondItem="Gsy-CZ-Tlc" secondAttribute="centerX" constant="25.5" id="m5z-iS-vKb"/>
                             <constraint firstItem="Gsy-CZ-Tlc" firstAttribute="height" secondItem="z2Y-o2-hTB" secondAttribute="height" id="ov6-Ca-hbj"/>
+                            <constraint firstAttribute="centerY" secondItem="Gsy-CZ-Tlc" secondAttribute="centerY" id="quG-dM-E5z"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2Ut-mB-UPV"/>
+                                <exclude reference="9fk-uh-apI"/>
+                                <exclude reference="m5z-iS-vKb"/>
+                                <exclude reference="ov6-Ca-hbj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="wz6-h9-N9g"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siq-be-zGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63" y="-456"/>
+            <point key="canvasLocation" x="511" y="-496"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="Bgg-cw-OQk">
             <objects>
-                <viewController id="Xhb-lp-iFW" sceneMemberID="viewController">
+                <viewController id="Xhb-lp-iFW" customClass="EELogInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IO0-ok-n0k"/>
                         <viewControllerLayoutGuide type="bottom" id="YCI-NR-xUm"/>
@@ -88,7 +102,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="presentation" id="Y3C-UP-j3w"/>
+                                    <segue destination="vXZ-lx-hvc" kind="presentation" identifier="presentOauthControllerSegueIdrntifier" id="Y3C-UP-j3w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -100,15 +114,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rJw-A6-gmu"/>
+                    <connections>
+                        <segue destination="p9g-Xt-c1A" kind="show" identifier="showVebViewControllerSegueIndentifier" id="182-8y-Gsv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnE-g9-S1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-252" y="253"/>
         </scene>
-        <!--View Controller-->
+        <!--Oauth Web View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="EEViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="EEOauthWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -173,8 +190,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9Vx-8W-41b"/>
                     <connections>
-                        <outlet property="mainWebView" destination="0T9-AN-4YB" id="os3-w2-yhT"/>
-                        <segue destination="p9g-Xt-c1A" kind="show" identifier="pushAction" id="68I-vF-fG6"/>
+                        <outlet property="mainWebView" destination="0T9-AN-4YB" id="P95-lH-teo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

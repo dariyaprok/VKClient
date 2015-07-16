@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EEViewController.h"
+#import "EEOauthWebViewController.h"
 
 @interface EEMainViewController : UIViewController
 
--(void)loadFriendsWothToken:(NSString*)token;
+
 @end

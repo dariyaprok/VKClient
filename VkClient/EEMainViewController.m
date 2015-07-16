@@ -15,11 +15,5 @@
 
 @implementation EEMainViewController
 
--(void)loadFriendsWithToken:(NSString*)token {
-/*    NSURL* urlToLogin = [NSURL URLWithString:autorizeUrlString];
-    NSURLRequest* requestToLogin = [NSURLRequest requestWithURL:urlToLogin];
-    [self
- .mainWebView2 loadRequest:requestToLogin];
-}*/
-}
+
 @end

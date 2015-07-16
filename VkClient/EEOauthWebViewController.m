@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Dariya. All rights reserved.
 //
 
-#import "EEViewController.h"
+#import "EEOauthWebViewController.h"
 #import "EEMainViewController.h"
+#import "EELogInViewController.h"
 
-@interface EEViewController ()
+@interface EEOauthWebViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *mainWebView;
-@property (nonatomic, retain) NSString* token;
 
 
 @end
 
-@implementation EEViewController
+@implementation EEOauthWebViewController
 static NSString* const autorizeUrlString = @"https://oauth.vk.com/authorize?client_id=4985115&redirect_uri=https://vk.com/feed&scope=129&display=mobile&response_type=token";
 
 - (void)viewDidLoad {
@@ -31,26 +31,20 @@ static NSString* const autorizeUrlString = @"https://oauth.vk.com/authorize?clie
         
         tokenRange.location = NSMaxRange([[request.URL absoluteString] rangeOfString:@"access_token="]);
         tokenRange.length = [[request.URL absoluteString] rangeOfString:@"&expires_in"].location - tokenRange.location;
-        self.token = [[request.URL absoluteString] substringWithRange:tokenRange];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self performSegueWithIdentifier:@"pushAction" sender:self];
+        NSString* token = [[request.URL absoluteString] substringWithRange:tokenRange];
+        if ([self.delegate respondsToSelector:@selector(webViewController:didSuccessWithToken:)]) {
+            [self.delegate webViewController:self didSuccessWithToken:token];
+        }
+        
     }
     return YES;
 }
 
-
-
-
--(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    UIAlertView* message;
-    message = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, you didn't log in" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
-    [message show];
+- (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    if([self.delegate respondsToSelector:@selector(webViewController:didFailLoadWithError:)]) {
+    [self.delegate webViewController:self didFailLoadWithError:error];
+    }
 }
-
-/*- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"dff");
-}
-*/
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

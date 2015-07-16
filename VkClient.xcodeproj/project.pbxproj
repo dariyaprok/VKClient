@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		84B0D7F71B4B1EE1008BC181 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F61B4B1EE1008BC181 /* main.m */; };
 		84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */; };
-		84B0D7FD1B4B1EE1008BC181 /* EEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7FC1B4B1EE1008BC181 /* EEViewController.m */; };
+		84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */; };
 		84B0D8001B4B1EE1008BC181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B0D7FE1B4B1EE1008BC181 /* Main.storyboard */; };
 		84B0D8021B4B1EE1008BC181 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B0D8011B4B1EE1008BC181 /* Images.xcassets */; };
 		84B0D8051B4B1EE1008BC181 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B0D8031B4B1EE1008BC181 /* LaunchScreen.xib */; };
@@ -17,6 +17,7 @@
 		84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D81E1B4C0DDC008BC181 /* EEUIColorOwnColors.m */; };
 		84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D8241B4C3DE4008BC181 /* EELayerButton.m */; };
 		84B0D8301B515B3D008BC181 /* EEMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D82F1B515B3D008BC181 /* EEMainViewController.m */; };
+		84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +36,8 @@
 		84B0D7F61B4B1EE1008BC181 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84B0D7F81B4B1EE1008BC181 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84B0D7FB1B4B1EE1008BC181 /* EEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EEViewController.h; sourceTree = "<group>"; };
-		84B0D7FC1B4B1EE1008BC181 /* EEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EEViewController.m; sourceTree = "<group>"; };
+		84B0D7FB1B4B1EE1008BC181 /* EEOauthWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EEOauthWebViewController.h; sourceTree = "<group>"; };
+		84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EEOauthWebViewController.m; sourceTree = "<group>"; };
 		84B0D7FF1B4B1EE1008BC181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84B0D8011B4B1EE1008BC181 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84B0D8041B4B1EE1008BC181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -49,6 +50,8 @@
 		84B0D8241B4C3DE4008BC181 /* EELayerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELayerButton.m; sourceTree = "<group>"; };
 		84B0D82E1B515B3D008BC181 /* EEMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEMainViewController.h; sourceTree = "<group>"; };
 		84B0D82F1B515B3D008BC181 /* EEMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEMainViewController.m; sourceTree = "<group>"; };
+		84DF16A41B57DCEC0092A6FF /* EELogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELogInViewController.h; sourceTree = "<group>"; };
+		84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELogInViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +96,10 @@
 				84B0D8201B4C0DFC008BC181 /* Additions */,
 				84B0D7F81B4B1EE1008BC181 /* AppDelegate.h */,
 				84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */,
-				84B0D7FB1B4B1EE1008BC181 /* EEViewController.h */,
-				84B0D7FC1B4B1EE1008BC181 /* EEViewController.m */,
+				84DF16A41B57DCEC0092A6FF /* EELogInViewController.h */,
+				84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */,
+				84B0D7FB1B4B1EE1008BC181 /* EEOauthWebViewController.h */,
+				84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */,
 				84B0D82E1B515B3D008BC181 /* EEMainViewController.h */,
 				84B0D82F1B515B3D008BC181 /* EEMainViewController.m */,
 				84B0D7FE1B4B1EE1008BC181 /* Main.storyboard */,
@@ -260,8 +265,9 @@
 			files = (
 				84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */,
 				84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */,
-				84B0D7FD1B4B1EE1008BC181 /* EEViewController.m in Sources */,
+				84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */,
 				84B0D8301B515B3D008BC181 /* EEMainViewController.m in Sources */,
+				84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */,
 				84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */,
 				84B0D7F71B4B1EE1008BC181 /* main.m in Sources */,
 			);
