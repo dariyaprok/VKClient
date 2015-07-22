@@ -20,7 +20,7 @@
 
 static EEVkClientManager *sharedModel;
 -(NSURLRequest*)getRequestForFriendsId {
-    NSString* urlString = [NSString stringWithFormat:@"https://api.vk.com/method/friends.get?access_token=%@", self.token];
+    NSString* urlString = [NSString stringWithFormat:@"https://api.vk.com/method/friends.get?order=mobile&access_token=%@", self.token];
     NSURL* url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return request;
@@ -68,9 +68,7 @@ static EEVkClientManager *sharedModel;
         [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSString* element = [NSString stringWithFormat:@"%@ %@", [[[responseObject valueForKey:@"response"] objectAtIndex:0] valueForKey:@"last_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:0] valueForKey:@"first_name"]];
             [self.friendsNameAnsLastNames addObject:element];
-            NSLog(self.friendsNameAnsLastNames[i]);
-            if(i == self.mutArrayOfIds.count - 1) {
-                [self.delegate friendsLoadWithSuccses];          }
+                [self.delegate friendsLoadWithSuccses];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [self isError:error];
