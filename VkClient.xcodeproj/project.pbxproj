@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		666F8B4D25D2760EBAC6BEF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86534B2DBDD47609144E3732 /* libPods.a */; };
 		84B0D7F71B4B1EE1008BC181 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F61B4B1EE1008BC181 /* main.m */; };
 		84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */; };
 		84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */; };
@@ -16,8 +17,9 @@
 		84B0D8111B4B1EE1008BC181 /* VkClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D8101B4B1EE1008BC181 /* VkClientTests.m */; };
 		84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D81E1B4C0DDC008BC181 /* EEUIColorOwnColors.m */; };
 		84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D8241B4C3DE4008BC181 /* EELayerButton.m */; };
-		84B0D8301B515B3D008BC181 /* EEMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D82F1B515B3D008BC181 /* EEMainViewController.m */; };
+		84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D82F1B515B3D008BC181 /* EETableViewController.m */; };
 		84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */; };
+		84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		76DADC50FF1753B856A7E5F9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		84B0D7F11B4B1EE1008BC181 /* VkClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B0D7F51B4B1EE1008BC181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B0D7F61B4B1EE1008BC181 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -48,10 +51,14 @@
 		84B0D81E1B4C0DDC008BC181 /* EEUIColorOwnColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEUIColorOwnColors.m; sourceTree = "<group>"; };
 		84B0D8231B4C3DE4008BC181 /* EELayerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELayerButton.h; sourceTree = "<group>"; };
 		84B0D8241B4C3DE4008BC181 /* EELayerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELayerButton.m; sourceTree = "<group>"; };
-		84B0D82E1B515B3D008BC181 /* EEMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEMainViewController.h; sourceTree = "<group>"; };
-		84B0D82F1B515B3D008BC181 /* EEMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEMainViewController.m; sourceTree = "<group>"; };
+		84B0D82E1B515B3D008BC181 /* EETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EETableViewController.h; sourceTree = "<group>"; };
+		84B0D82F1B515B3D008BC181 /* EETableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EETableViewController.m; sourceTree = "<group>"; };
 		84DF16A41B57DCEC0092A6FF /* EELogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELogInViewController.h; sourceTree = "<group>"; };
 		84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELogInViewController.m; sourceTree = "<group>"; };
+		84DF16AA1B57FE8C0092A6FF /* EEVkClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEVkClientManager.h; sourceTree = "<group>"; };
+		84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEVkClientManager.m; sourceTree = "<group>"; };
+		86534B2DBDD47609144E3732 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D016513710E26B93EF163BAE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666F8B4D25D2760EBAC6BEF6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +86,8 @@
 				84B0D7F31B4B1EE1008BC181 /* VkClient */,
 				84B0D80D1B4B1EE1008BC181 /* VkClientTests */,
 				84B0D7F21B4B1EE1008BC181 /* Products */,
+				FB612546235AA035130F8CC0 /* Pods */,
+				EF6BB01CF50B1E56BD358B8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,12 +106,9 @@
 				84B0D8201B4C0DFC008BC181 /* Additions */,
 				84B0D7F81B4B1EE1008BC181 /* AppDelegate.h */,
 				84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */,
-				84DF16A41B57DCEC0092A6FF /* EELogInViewController.h */,
-				84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */,
-				84B0D7FB1B4B1EE1008BC181 /* EEOauthWebViewController.h */,
-				84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */,
-				84B0D82E1B515B3D008BC181 /* EEMainViewController.h */,
-				84B0D82F1B515B3D008BC181 /* EEMainViewController.m */,
+				84DF16AA1B57FE8C0092A6FF /* EEVkClientManager.h */,
+				84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */,
+				84DF16AD1B580E540092A6FF /* ViewControllers */,
 				84B0D7FE1B4B1EE1008BC181 /* Main.storyboard */,
 				84B0D8011B4B1EE1008BC181 /* Images.xcassets */,
 				84B0D8031B4B1EE1008BC181 /* LaunchScreen.xib */,
@@ -163,6 +170,60 @@
 			name = EELayerButton;
 			sourceTree = "<group>";
 		};
+		84DF16AD1B580E540092A6FF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84DF16AF1B580E900092A6FF /* EELogInViewController */,
+				84DF16AE1B580E700092A6FF /* EEOauthWebViewController */,
+				84DF16B01B580EDE0092A6FF /* EEMainWebViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84DF16AE1B580E700092A6FF /* EEOauthWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84B0D7FB1B4B1EE1008BC181 /* EEOauthWebViewController.h */,
+				84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */,
+			);
+			name = EEOauthWebViewController;
+			sourceTree = "<group>";
+		};
+		84DF16AF1B580E900092A6FF /* EELogInViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84DF16A41B57DCEC0092A6FF /* EELogInViewController.h */,
+				84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */,
+			);
+			name = EELogInViewController;
+			sourceTree = "<group>";
+		};
+		84DF16B01B580EDE0092A6FF /* EEMainWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84B0D82E1B515B3D008BC181 /* EETableViewController.h */,
+				84B0D82F1B515B3D008BC181 /* EETableViewController.m */,
+			);
+			name = EEMainWebViewController;
+			sourceTree = "<group>";
+		};
+		EF6BB01CF50B1E56BD358B8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86534B2DBDD47609144E3732 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB612546235AA035130F8CC0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D016513710E26B93EF163BAE /* Pods.debug.xcconfig */,
+				76DADC50FF1753B856A7E5F9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,9 +231,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84B0D8141B4B1EE1008BC181 /* Build configuration list for PBXNativeTarget "VkClient" */;
 			buildPhases = (
+				D6C038B29C1F7E5A0644D6C2 /* Check Pods Manifest.lock */,
 				84B0D7ED1B4B1EE1008BC181 /* Sources */,
 				84B0D7EE1B4B1EE1008BC181 /* Frameworks */,
 				84B0D7EF1B4B1EE1008BC181 /* Resources */,
+				BF005A7ED711E1D24BB4463C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,6 +321,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BF005A7ED711E1D24BB4463C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C038B29C1F7E5A0644D6C2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84B0D7ED1B4B1EE1008BC181 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -266,7 +362,8 @@
 				84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */,
 				84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */,
 				84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */,
-				84B0D8301B515B3D008BC181 /* EEMainViewController.m in Sources */,
+				84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */,
+				84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */,
 				84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */,
 				84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */,
 				84B0D7F71B4B1EE1008BC181 /* main.m in Sources */,
@@ -393,6 +490,7 @@
 		};
 		84B0D8151B4B1EE1008BC181 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D016513710E26B93EF163BAE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VkClient/Info.plist;
@@ -403,6 +501,7 @@
 		};
 		84B0D8161B4B1EE1008BC181 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76DADC50FF1753B856A7E5F9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VkClient/Info.plist;

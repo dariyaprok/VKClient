@@ -7,11 +7,11 @@
 //
 
 #import "EEOauthWebViewController.h"
-#import "EEMainViewController.h"
+#import "EETableViewController.h"
 #import "EELogInViewController.h"
 
 @interface EEOauthWebViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *mainWebView;
+@property (weak, nonatomic) IBOutlet UIWebView *oauthWebView;
 
 
 @end
@@ -23,7 +23,7 @@ static NSString* const autorizeUrlString = @"https://oauth.vk.com/authorize?clie
     [super viewDidLoad];
     NSURL* urlToLogin = [NSURL URLWithString:autorizeUrlString];
     NSURLRequest* requestToLogin = [NSURLRequest requestWithURL:urlToLogin];
-    [self.mainWebView loadRequest:requestToLogin];
+    [self.oauthWebView loadRequest:requestToLogin];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     if([[request.URL absoluteString] containsString:@"access_token="]) {

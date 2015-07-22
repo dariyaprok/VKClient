@@ -7,11 +7,11 @@
 //
 
 #import "EELogInViewController.h"
+#import "EEVkClientManager.h"
 
 @interface EELogInViewController()
 
-@property NSString* userToken;
-
+@property (strong, nonatomic) EEVkClientManager* manager;
 @end
 @implementation EELogInViewController
 
@@ -23,9 +23,10 @@
 
 #pragma mark protocolmethods
 -(void)webViewController: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token {
-    self.userToken = token;
     [self dismissViewControllerAnimated:YES completion:nil];
     [self performSegueWithIdentifier:@"showVebViewControllerSegueIndentifier" sender:self];
+    self.manager = [EEVkClientManager sharedModel];
+    self.manager.token = token;
     
 }
 -(void)webViewController:(EEOauthWebViewController*)viewController didFailLoadWithError:(NSError*)error {

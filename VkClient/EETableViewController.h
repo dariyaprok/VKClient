@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EEOauthWebViewController.h"
+#import "EEVkClientManager.h"
 
-@interface EEMainViewController : UIViewController
+@interface EETableViewController : UIViewController <UITableViewDataSource, EEVkClientManagerDelegate>
 
 
 @end

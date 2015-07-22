@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-908" y="253"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="WIj-sR-qE9">
             <objects>
-                <viewController storyboardIdentifier="10" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p9g-Xt-c1A" customClass="EEMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="10" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p9g-Xt-c1A" customClass="EETableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ngF-O2-NVL"/>
                         <viewControllerLayoutGuide type="bottom" id="plL-j2-2Kk"/>
@@ -34,34 +34,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-CZ-Tlc">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eLN-Zd-pdg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.22352942819999999" green="0.047058828179999998" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Gsy-CZ-Tlc" secondAttribute="height" multiplier="1:1" id="Mvl-JN-y26"/>
-                                </constraints>
-                            </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="cell_identifier" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_identifier" id="fup-1z-Yb9">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fup-1z-Yb9" id="HD9-aT-JQs">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="p9g-Xt-c1A" id="B6z-YO-7tg"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gsy-CZ-Tlc" firstAttribute="width" secondItem="z2Y-o2-hTB" secondAttribute="width" id="2Ut-mB-UPV"/>
-                            <constraint firstAttribute="width" secondItem="Gsy-CZ-Tlc" secondAttribute="height" multiplier="1:1" id="5GR-lR-Q8e"/>
-                            <constraint firstAttribute="centerY" secondItem="Gsy-CZ-Tlc" secondAttribute="centerY" constant="-23" id="9fk-uh-apI"/>
-                            <constraint firstAttribute="centerX" secondItem="Gsy-CZ-Tlc" secondAttribute="centerX" id="TgD-Z3-X7Y"/>
-                            <constraint firstAttribute="centerX" secondItem="Gsy-CZ-Tlc" secondAttribute="centerX" constant="25.5" id="m5z-iS-vKb"/>
-                            <constraint firstItem="Gsy-CZ-Tlc" firstAttribute="height" secondItem="z2Y-o2-hTB" secondAttribute="height" id="ov6-Ca-hbj"/>
-                            <constraint firstAttribute="centerY" secondItem="Gsy-CZ-Tlc" secondAttribute="centerY" id="quG-dM-E5z"/>
+                            <constraint firstAttribute="centerY" secondItem="eLN-Zd-pdg" secondAttribute="centerY" id="HYX-cU-2PJ"/>
+                            <constraint firstAttribute="width" secondItem="eLN-Zd-pdg" secondAttribute="width" id="c4t-qy-ZcT"/>
+                            <constraint firstAttribute="height" secondItem="eLN-Zd-pdg" secondAttribute="height" id="vDQ-ws-96S"/>
+                            <constraint firstAttribute="centerX" secondItem="eLN-Zd-pdg" secondAttribute="centerX" id="wSf-II-ESr"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2Ut-mB-UPV"/>
-                                <exclude reference="9fk-uh-apI"/>
-                                <exclude reference="m5z-iS-vKb"/>
-                                <exclude reference="ov6-Ca-hbj"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="wz6-h9-N9g"/>
+                    <connections>
+                        <outlet property="tableView" destination="eLN-Zd-pdg" id="NCl-eB-U4y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siq-be-zGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +191,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9Vx-8W-41b"/>
                     <connections>
-                        <outlet property="mainWebView" destination="0T9-AN-4YB" id="P95-lH-teo"/>
+                        <outlet property="oauthWebView" destination="0T9-AN-4YB" id="IdM-n7-OWc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
