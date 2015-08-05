@@ -10,7 +10,8 @@
 #import "EEOauthWebViewController.h"
 #import "EEVkClientManager.h"
 
-@interface EETableViewController : UIViewController <UITableViewDataSource, EEVkClientManagerDelegate>
+
+@interface EETableViewController : UIViewController <UITableViewDataSource, EEVkClientManagerDelegate, UIScrollViewDelegate, UITableViewDelegate>
 
 
 @end

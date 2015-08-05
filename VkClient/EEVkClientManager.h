@@ -7,20 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 @protocol EEVkClientManagerDelegate <NSObject>
+@optional
 -(void)friendsLoadWithSuccses;
+-(void)setPosition: (NSInteger)position;
 @end
 
 @interface EEVkClientManager : NSObject
 @property (strong, nonatomic) NSString* token;
 @property (strong, nonatomic) NSDictionary* responseListOfId;
-@property (strong, nonatomic) NSMutableArray* friendsNameAnsLastNames;
+@property (strong, nonatomic) NSMutableArray* dataAboutFriends;
 @property (nonatomic, weak) id<EEVkClientManagerDelegate> delegate;
+@property (nonatomic, strong) AFHTTPRequestOperationManager* operationManager;
 
 +(instancetype)sharedModel;
 -(NSURLRequest*)getRequestForFriendsId;
 -(void)isError: (NSError*)error;
 -(NSInteger)getNumberOfFriends;
--(void)responseIdToNames;
+-(void)responseIdToIds;
+-(void)makeRequestForListOfFriends;
+-(void)makeRequestForNameAndLastName;
+-(void)prepareDataForFriendWithNumber: (NSInteger)number;
 
 @end

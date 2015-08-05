@@ -20,6 +20,8 @@
 		84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D82F1B515B3D008BC181 /* EETableViewController.m */; };
 		84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */; };
 		84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */; };
+		84E574FB1B72043F0008F117 /* EEAlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E574FA1B72043E0008F117 /* EEAlbumsTableViewController.m */; };
+		84ED02561B6B61DB005D5AE3 /* EEPersonalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ED02551B6B61DB005D5AE3 /* EEPersonalPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,10 @@
 		84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELogInViewController.m; sourceTree = "<group>"; };
 		84DF16AA1B57FE8C0092A6FF /* EEVkClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEVkClientManager.h; sourceTree = "<group>"; };
 		84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEVkClientManager.m; sourceTree = "<group>"; };
+		84E574F91B72043E0008F117 /* EEAlbumsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEAlbumsTableViewController.h; sourceTree = "<group>"; };
+		84E574FA1B72043E0008F117 /* EEAlbumsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEAlbumsTableViewController.m; sourceTree = "<group>"; };
+		84ED02541B6B61DB005D5AE3 /* EEPersonalPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPersonalPageViewController.h; sourceTree = "<group>"; };
+		84ED02551B6B61DB005D5AE3 /* EEPersonalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEPersonalPageViewController.m; sourceTree = "<group>"; };
 		86534B2DBDD47609144E3732 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D016513710E26B93EF163BAE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +179,8 @@
 		84DF16AD1B580E540092A6FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84E574FC1B7204680008F117 /* EEAlbumsTableViewController */,
+				84ED02571B6B61E3005D5AE3 /* EEPersonalPageViewController */,
 				84DF16AF1B580E900092A6FF /* EELogInViewController */,
 				84DF16AE1B580E700092A6FF /* EEOauthWebViewController */,
 				84DF16B01B580EDE0092A6FF /* EEMainWebViewController */,
@@ -205,6 +213,24 @@
 				84B0D82F1B515B3D008BC181 /* EETableViewController.m */,
 			);
 			name = EEMainWebViewController;
+			sourceTree = "<group>";
+		};
+		84E574FC1B7204680008F117 /* EEAlbumsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84E574F91B72043E0008F117 /* EEAlbumsTableViewController.h */,
+				84E574FA1B72043E0008F117 /* EEAlbumsTableViewController.m */,
+			);
+			name = EEAlbumsTableViewController;
+			sourceTree = "<group>";
+		};
+		84ED02571B6B61E3005D5AE3 /* EEPersonalPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84ED02541B6B61DB005D5AE3 /* EEPersonalPageViewController.h */,
+				84ED02551B6B61DB005D5AE3 /* EEPersonalPageViewController.m */,
+			);
+			name = EEPersonalPageViewController;
 			sourceTree = "<group>";
 		};
 		EF6BB01CF50B1E56BD358B8A /* Frameworks */ = {
@@ -359,8 +385,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84ED02561B6B61DB005D5AE3 /* EEPersonalPageViewController.m in Sources */,
 				84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */,
 				84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */,
+				84E574FB1B72043F0008F117 /* EEAlbumsTableViewController.m in Sources */,
 				84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */,
 				84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */,
 				84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */,

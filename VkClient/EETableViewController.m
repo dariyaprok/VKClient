@@ -9,12 +9,15 @@
 #import "EETableViewController.h"
 #import "EEVkClientManager.h"
 #import <AFNetworking/AFHTTPRequestOperation.h>
-
+#import "EEUIColorOwnColors.h"
+#import "EELayerButton.h"
+#import "EEPersonalPageViewController.h"
 
 //#import "ASIFormDataRequest.h"
 @interface EETableViewController()
 @property (weak, nonatomic) EEVkClientManager* manager;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -25,24 +28,14 @@
     //NSString* responseString;
     self.manager = [EEVkClientManager sharedModel];
     self.manager.delegate = self;
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:[self.manager getRequestForFriendsId]];
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.manager.responseListOfId = responseObject;
-        [self.manager responseIdToNames];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.manager isError:error];
-    }];
-    [[NSOperationQueue mainQueue] addOperation:op];
+    [self.manager makeRequestForListOfFriends];
 }
 
 -(void)friendsLoadWithSuccses {
     [self.tableView reloadData];
 }
 
--(void)makeOperationLoad {
-    
-}
+
 #pragma mark dataSource methods
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString* cellIdentifier = @"cell_identifier";
@@ -50,7 +43,10 @@
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellIdentifier];
     }
-    cell.textLabel.text = [self.manager.friendsNameAnsLastNames objectAtIndex:indexPath.row];
+    NSArray* arrayOfData = [[self.manager.dataAboutFriends objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
+    cell.textLabel.textColor = [UIColor vkBlueColor];
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:arrayOfData[2]]]];
     return cell;
 }
 
@@ -58,4 +54,25 @@
  numberOfRowsInSection:(NSInteger)section{
     return [self.manager getNumberOfFriends];
 }
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"pushPersonalPageControllerSegueIdrntifier" sender:self];
+    [self.manager prepareDataForFriendWithNumber:indexPath.row];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate {
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.bounds;
+    CGSize size = scrollView.contentSize;
+    UIEdgeInsets inset = scrollView.contentInset;
+    float y = offset.y + bounds.size.height - inset.bottom;
+    float h = size.height;
+    float reload_distance = 10;
+    if(y > h + reload_distance) {
+    [self.manager makeRequestForNameAndLastName];
+    }
+}
+
+
 @end

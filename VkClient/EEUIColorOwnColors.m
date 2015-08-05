@@ -11,7 +11,7 @@
 @implementation UIColor(ownColors)
 +(UIColor*)vkBlueColor
 {
-    return [UIColor colorWithRed:0.81 green:0.109 blue:0.147 alpha:1];
+    return [UIColor colorWithRed:64/1000 green:89/1000 blue:129/1000 alpha:1];
 }
 
 @end

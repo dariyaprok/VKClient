@@ -11,14 +11,17 @@
 #import <AFNetworking/AFHTTPRequestOperation.h>
 #import "EETableViewController.h"
 
+
 @interface EEVkClientManager()
 @property (nonatomic, strong) NSMutableArray* mutArrayOfIds;
-@property (weak, nonatomic) EETableViewController* myController;
 @end
 
 @implementation EEVkClientManager
 
+static NSString* baseUrl = @"https://api.vk.com/method/users.get";
 static EEVkClientManager *sharedModel;
+static NSInteger const amountOfLoadedFriends = 20;
+
 -(NSURLRequest*)getRequestForFriendsId {
     NSString* urlString = [NSString stringWithFormat:@"https://api.vk.com/method/friends.get?order=mobile&access_token=%@", self.token];
     NSURL* url = [NSURL URLWithString:urlString];
@@ -41,10 +44,10 @@ static EEVkClientManager *sharedModel;
 }
 
 -(NSInteger)getNumberOfFriends {
-    return self.friendsNameAnsLastNames.count;
+    return self.dataAboutFriends.count;
 }
 
--(void)responseIdToNames {
+-(void)responseIdToIds {
     NSString* myString = [NSString stringWithFormat:@"%@", [self.responseListOfId objectForKey:@"response"]];
     //NSLog(myString);
     NSArray* arrayOfId = [myString componentsSeparatedByString:@",\n    "];
@@ -55,26 +58,56 @@ static EEVkClientManager *sharedModel;
     self.mutArrayOfIds = [arrayOfId mutableCopy];
     [self.mutArrayOfIds replaceObjectAtIndex:0 withObject:element0];
     [self.mutArrayOfIds replaceObjectAtIndex:arrayOfId.count - 1 withObject:elementLast];
-    [self makeRequestForNameAndLastName];
+    
 }
--(void)makeRequestForNameAndLastName {
-    for(int i=0; i<self.mutArrayOfIds.count; ++i) {
-        NSString* reqString = [NSString stringWithFormat:@"https://api.vk.com/method/users.get?user_id=%@", self.mutArrayOfIds[i]];
-        NSURL* url = [NSURL URLWithString:reqString];
-        NSURLRequest* req = [NSURLRequest requestWithURL:url];
-        AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
-        op.responseSerializer = [AFJSONResponseSerializer serializer];
-        self.friendsNameAnsLastNames = [[NSMutableArray alloc] initWithCapacity:self.mutArrayOfIds.count];
-        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSString* element = [NSString stringWithFormat:@"%@ %@", [[[responseObject valueForKey:@"response"] objectAtIndex:0] valueForKey:@"last_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:0] valueForKey:@"first_name"]];
-            [self.friendsNameAnsLastNames addObject:element];
-                [self.delegate friendsLoadWithSuccses];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self isError:error];
-        }];
-        [[NSOperationQueue mainQueue] addOperation:op];
-    }
+-(void)makeRequestForListOfFriends {
+    self.operationManager = [AFHTTPRequestOperationManager manager];
+    [self.operationManager GET:@"https://api.vk.com/method/friends.get" parameters:@{@"order":@"mobile", @"access_token":[NSString stringWithFormat:@"%@", self.token]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.responseListOfId = responseObject;
+        [self responseIdToIds];
+        self.dataAboutFriends = [[NSMutableArray alloc] initWithCapacity:self.mutArrayOfIds.count];
+        [self makeRequestForNameAndLastName];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self isError:error];
+    }];
 }
 
+NSInteger amontOfScrollsDown = 0;
+-(NSString*)makeStringOfIdsForRequest {
+    NSString* stringWithArrayOfIds;
+    for(NSInteger i = (amontOfScrollsDown * amountOfLoadedFriends); i < (((amontOfScrollsDown+1) * amountOfLoadedFriends) < self.mutArrayOfIds.count ? ((amontOfScrollsDown+1) * amountOfLoadedFriends) : (self.mutArrayOfIds.count)) ; ++i) {
+        if(i == (amontOfScrollsDown * amountOfLoadedFriends)) {
+            stringWithArrayOfIds = [NSString stringWithFormat:@"%@", self.mutArrayOfIds[i]];
+        }
+        else {
+        stringWithArrayOfIds = [NSString stringWithFormat:@"%@,%@", stringWithArrayOfIds,self.mutArrayOfIds[i]];
+        }
+    }
+    
+    return stringWithArrayOfIds;
+}
+
+-(void)makeRequestForNameAndLastName {
+    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online"};
+    NSInteger amountOfIdsInParamenters = [[self makeStringOfIdsForRequest] componentsSeparatedByString:@","].count;
+    [self.operationManager GET:@"https://api.vk.com/method/users.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
+        for(NSInteger i = 0;i<amountOfIdsInParamenters; ++i) {
+        NSString* element = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@", [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"first_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"last_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"photo_max"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"sex"],[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"online"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"bdate"]];
+        [self.dataAboutFriends addObject:element];
+        [self.delegate friendsLoadWithSuccses];
+        }
+        amontOfScrollsDown++;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self isError:error];
+    }];
+}
+
+
+
+
+
+-(void)prepareDataForFriendWithNumber: (NSInteger)number {
+    [self.delegate setPosition:number];
+    
+}
 @end
