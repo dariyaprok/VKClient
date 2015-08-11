@@ -88,7 +88,7 @@ NSInteger amontOfScrollsDown = 0;
 }
 
 -(void)makeRequestForNameAndLastName {
-    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online"};
+    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online", @"access_token":[NSString stringWithFormat:@"%@", self.token]};
     NSInteger amountOfIdsInParamenters = [[self makeStringOfIdsForRequest] componentsSeparatedByString:@","].count;
     [self.operationManager GET:@"https://api.vk.com/method/users.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         for(NSInteger i = 0;i<amountOfIdsInParamenters; ++i) {
@@ -102,7 +102,18 @@ NSInteger amontOfScrollsDown = 0;
     }];
 }
 
-
+-(void)makeRequestForAlbumForFriendWithNumber:(NSInteger)number {
+    NSDictionary* paramaters = @{@"owner_id": self.mutArrayOfIds[number], @"access_token":[NSString stringWithFormat:@"%@", self.token], @"need_covers":@1};
+    [self.operationManager GET:@"https://api.vk.com/method/photos.getAlbums" parameters:paramaters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       // NSArray arrayWithInfoAboutAlbums =
+        self.dataAboutAlbumsFriends = [responseObject valueForKey:@"response"];
+        NSLog(@"%@", responseObject);
+        NSLog(@"%@", self.dataAboutAlbumsFriends);
+        [self.delegate succsesLoadedAlbumsWithNumber:number ];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self isEqual:error];
+    }];
+}
 
 
 
@@ -110,4 +121,10 @@ NSInteger amontOfScrollsDown = 0;
     [self.delegate setPosition:number];
     
 }
+
+-(void)prepareAlbumsForFriendsWithNaumber: (NSInteger)number {
+    [self.delegate setPosition:number];
+}
+
+
 @end

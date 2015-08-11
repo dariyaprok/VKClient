@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "EEVkClientManager.h"
 
-@interface EEAlbumsTableViewController : UIViewController
-
+@interface EEAlbumsTableViewController : UIViewController <EEVkClientManagerDelegate>
+@property NSInteger positionOfFriendForPhotos;
 @end

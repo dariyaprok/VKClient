@@ -60,6 +60,10 @@
     [self.manager prepareDataForFriendWithNumber:indexPath.row];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.manager.delegate = self;
+    [self.manager makeRequestForAlbumForFriendWithNumber:indexPath.row];
+}
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
                   willDecelerate:(BOOL)decelerate {
     CGPoint offset = scrollView.contentOffset;
@@ -72,6 +76,10 @@
     if(y > h + reload_distance) {
     [self.manager makeRequestForNameAndLastName];
     }
+}
+-(void) succsesLoadedAlbumsWithNumber:(NSInteger)number {
+    [self performSegueWithIdentifier:@"showAlbumsTableViewControllerSegueIdentifier" sender:self];
+    [self.manager prepareAlbumsForFriendsWithNaumber:number];
 }
 
 
