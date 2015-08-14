@@ -36,5 +36,19 @@
     return cell;
     }
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [self.collectionViewOfPhotos cellForItemAtIndexPath:indexPath];
+    UIImageView* bigImageView = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
+    [bigImageView hnk_setImageFromURL: [NSURL URLWithString:self.manager.linksForSmallPhotos[indexPath.row]]];
+    bigImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:bigImageView];
+    [UIView animateWithDuration:2 animations:^{
+        bigImageView.backgroundColor = [UIColor colorWithRed:0.29 green:0.29 blue:0.29 alpha:0.9];
+        bigImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [bigImageView hnk_setImageFromURL:[NSURL URLWithString:self.manager.linksForBigPhotos[indexPath.row]]];
+    }];
+    
+    
+    
+}
 @end

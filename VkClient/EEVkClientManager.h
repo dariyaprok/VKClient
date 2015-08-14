@@ -25,6 +25,7 @@
 @property (nonatomic) NSInteger *amountOfAlbums;
 @property (strong, nonatomic) NSMutableArray* dataAboutAlbumsFriends;
 @property (strong, nonatomic) NSMutableArray* linksForSmallPhotos;
+@property (strong, nonatomic) NSMutableArray* linksForBigPhotos;
 
 +(instancetype)sharedModel;
 -(NSURLRequest*)getRequestForFriendsId;

@@ -10,6 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "EETableViewController.h"
 
-@interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UIBarPositioningDelegate, EEVkClientManagerDelegate>
+@interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, EEVkClientManagerDelegate>
 
 @end

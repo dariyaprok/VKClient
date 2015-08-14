@@ -114,10 +114,12 @@ NSInteger amontOfScrollsDown = 0;
 
 -(void)makeRequestForFriendWithNumber: (NSInteger)number PhotosFromAlbumWithNumber:(NSInteger)albumNumber  {
     self.linksForSmallPhotos = [[NSMutableArray alloc] init];
-    NSDictionary* parameters = @{@"access_token":[NSString stringWithFormat:@"%@", self.token], @"owner_id": self.mutArrayOfIds[number], @"album_id" : [self.dataAboutAlbumsFriends[albumNumber] objectForKey:@"aid"], @"rev" : @1};
+    self.linksForBigPhotos = [[NSMutableArray alloc] init];
+    NSDictionary* parameters = @{ @"owner_id": self.mutArrayOfIds[number], @"album_id" : [self.dataAboutAlbumsFriends[albumNumber] objectForKey:@"aid"], @"rev" : @1, @"access_token":[NSString stringWithFormat:@"%@", self.token]};
     [self.operationManager GET:@"https://api.vk.com/method/photos.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for(NSInteger i =0; i<((NSArray*)[responseObject valueForKey:@"response"]).count; ++i) {
         [self.linksForSmallPhotos addObject:[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey: @"src_small"] ];
+            [self.linksForBigPhotos addObject:[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey: @"src_big"] ];
         }
         //NSLog(@"%@", self.linksForSmallPhotos);
         [self.delegate photosLoadedWithSuccses];
