@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Haneke (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Haneke (~> 1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Haneke: d60be8b96b228633b24708dd153169d6849d6f78
 
 COCOAPODS: 0.37.2

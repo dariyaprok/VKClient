@@ -22,6 +22,7 @@
 		84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */; };
 		84E574FB1B72043F0008F117 /* EEAlbumsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E574FA1B72043E0008F117 /* EEAlbumsTableViewController.m */; };
 		84E574FF1B7A1A4B0008F117 /* EEAlbumsCustumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E574FE1B7A1A4B0008F117 /* EEAlbumsCustumCell.m */; };
+		84E575031B7B42570008F117 /* EECollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E575021B7B42570008F117 /* EECollectionViewController.m */; };
 		84ED02561B6B61DB005D5AE3 /* EEPersonalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ED02551B6B61DB005D5AE3 /* EEPersonalPageViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		84E574FA1B72043E0008F117 /* EEAlbumsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEAlbumsTableViewController.m; sourceTree = "<group>"; };
 		84E574FD1B7A1A4B0008F117 /* EEAlbumsCustumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEAlbumsCustumCell.h; sourceTree = "<group>"; };
 		84E574FE1B7A1A4B0008F117 /* EEAlbumsCustumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEAlbumsCustumCell.m; sourceTree = "<group>"; };
+		84E575011B7B42570008F117 /* EECollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EECollectionViewController.h; sourceTree = "<group>"; };
+		84E575021B7B42570008F117 /* EECollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EECollectionViewController.m; sourceTree = "<group>"; };
 		84ED02541B6B61DB005D5AE3 /* EEPersonalPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPersonalPageViewController.h; sourceTree = "<group>"; };
 		84ED02551B6B61DB005D5AE3 /* EEPersonalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEPersonalPageViewController.m; sourceTree = "<group>"; };
 		86534B2DBDD47609144E3732 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +186,7 @@
 		84DF16AD1B580E540092A6FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84E575041B7B425D0008F117 /* EECollectionViewController */,
 				84E574FC1B7204680008F117 /* EEAlbumsTableViewController */,
 				84ED02571B6B61E3005D5AE3 /* EEPersonalPageViewController */,
 				84DF16AF1B580E900092A6FF /* EELogInViewController */,
@@ -235,6 +239,15 @@
 				84E574FE1B7A1A4B0008F117 /* EEAlbumsCustumCell.m */,
 			);
 			name = EEAlbumsCustumCell;
+			sourceTree = "<group>";
+		};
+		84E575041B7B425D0008F117 /* EECollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84E575011B7B42570008F117 /* EECollectionViewController.h */,
+				84E575021B7B42570008F117 /* EECollectionViewController.m */,
+			);
+			name = EECollectionViewController;
 			sourceTree = "<group>";
 		};
 		84ED02571B6B61E3005D5AE3 /* EEPersonalPageViewController */ = {
@@ -402,6 +415,7 @@
 				84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */,
 				84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */,
 				84E574FB1B72043F0008F117 /* EEAlbumsTableViewController.m in Sources */,
+				84E575031B7B42570008F117 /* EECollectionViewController.m in Sources */,
 				84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */,
 				84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */,
 				84E574FF1B7A1A4B0008F117 /* EEAlbumsCustumCell.m in Sources */,

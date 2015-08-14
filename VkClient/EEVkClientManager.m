@@ -105,16 +105,26 @@ NSInteger amontOfScrollsDown = 0;
 -(void)makeRequestForAlbumForFriendWithNumber:(NSInteger)number {
     NSDictionary* paramaters = @{@"owner_id": self.mutArrayOfIds[number], @"access_token":[NSString stringWithFormat:@"%@", self.token], @"need_covers":@1};
     [self.operationManager GET:@"https://api.vk.com/method/photos.getAlbums" parameters:paramaters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-       // NSArray arrayWithInfoAboutAlbums =
         self.dataAboutAlbumsFriends = [responseObject valueForKey:@"response"];
-        NSLog(@"%@", responseObject);
-        NSLog(@"%@", self.dataAboutAlbumsFriends);
         [self.delegate succsesLoadedAlbumsWithNumber:number ];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self isEqual:error];
+        [self isError:error];
     }];
 }
 
+-(void)makeRequestForFriendWithNumber: (NSInteger)number PhotosFromAlbumWithNumber:(NSInteger)albumNumber  {
+    self.linksForSmallPhotos = [[NSMutableArray alloc] init];
+    NSDictionary* parameters = @{@"access_token":[NSString stringWithFormat:@"%@", self.token], @"owner_id": self.mutArrayOfIds[number], @"album_id" : [self.dataAboutAlbumsFriends[albumNumber] objectForKey:@"aid"], @"rev" : @1};
+    [self.operationManager GET:@"https://api.vk.com/method/photos.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        for(NSInteger i =0; i<((NSArray*)[responseObject valueForKey:@"response"]).count; ++i) {
+        [self.linksForSmallPhotos addObject:[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey: @"src_small"] ];
+        }
+        //NSLog(@"%@", self.linksForSmallPhotos);
+        [self.delegate photosLoadedWithSuccses];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self isError:error];
+    }];
+}
 
 
 -(void)prepareDataForFriendWithNumber: (NSInteger)number {

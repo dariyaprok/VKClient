@@ -49,4 +49,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 150;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.manager makeRequestForFriendWithNumber:self.positionOfFriendForPhotos PhotosFromAlbumWithNumber:indexPath.row];
+}
+
+-(void) photosLoadedWithSuccses {
+    [self performSegueWithIdentifier:@"showCollectionViewSegueIdentifier" sender:self];
+}
 @end

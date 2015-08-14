@@ -22,6 +22,72 @@
             </objects>
             <point key="canvasLocation" x="-908" y="253"/>
         </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="Vm3-DS-3CI">
+            <objects>
+                <viewController id="niK-um-nTE" customClass="EECollectionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="csj-hT-Xhb"/>
+                        <viewControllerLayoutGuide type="bottom" id="lfs-HY-DYd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ySc-nf-7pV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="edq-tu-Y34">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HHB-Db-fsl">
+                                    <size key="itemSize" width="70" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCellIdentifier" id="v8d-8X-Z9l">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="110" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-oS-Yx9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="5xo-oS-Yx9" secondAttribute="height" multiplier="1:1" id="7nP-d0-pfp"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="5xo-oS-Yx9" secondAttribute="centerX" id="Afn-cC-lWv"/>
+                                            <constraint firstAttribute="bottom" secondItem="5xo-oS-Yx9" secondAttribute="bottom" id="FW1-wM-GqH"/>
+                                            <constraint firstAttribute="centerY" secondItem="5xo-oS-Yx9" secondAttribute="centerY" id="oRv-nb-HbQ"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="niK-um-nTE" id="PYb-hH-tHJ"/>
+                                    <outlet property="delegate" destination="niK-um-nTE" id="iMa-xg-c2l"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="edq-tu-Y34" firstAttribute="width" secondItem="ySc-nf-7pV" secondAttribute="width" id="SIH-6L-nDa"/>
+                            <constraint firstAttribute="centerY" secondItem="edq-tu-Y34" secondAttribute="centerY" id="ehn-Gf-T4N"/>
+                            <constraint firstItem="edq-tu-Y34" firstAttribute="height" secondItem="ySc-nf-7pV" secondAttribute="height" id="gKS-U7-yPj"/>
+                            <constraint firstAttribute="centerX" secondItem="edq-tu-Y34" secondAttribute="centerX" id="y7f-hG-gCT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionViewOfPhotos" destination="edq-tu-Y34" id="hXH-A5-9IA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2IH-cH-mlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-908" y="-496"/>
+        </scene>
         <!--Albums Table View Controller-->
         <scene sceneID="RFx-Pb-B5l">
             <objects>
@@ -104,6 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="albumsTableView" destination="St1-Mj-tIS" id="HpT-A2-hN9"/>
+                        <segue destination="niK-um-nTE" kind="show" identifier="showCollectionViewSegueIdentifier" id="5Ia-v3-c5f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKm-44-q9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnE-g9-S1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-136" y="337"/>
+            <point key="canvasLocation" x="-158" y="253"/>
         </scene>
         <!--Oauth Web View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -388,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="326"/>
+            <point key="canvasLocation" x="511" y="253"/>
         </scene>
     </scenes>
 </document>

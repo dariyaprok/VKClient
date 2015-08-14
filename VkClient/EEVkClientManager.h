@@ -13,6 +13,7 @@
 -(void)friendsLoadWithSuccses;
 -(void)setPosition: (NSInteger)position;
 -(void)succsesLoadedAlbumsWithNumber:(NSInteger)number;
+-(void)photosLoadedWithSuccses;
 @end
 
 @interface EEVkClientManager : NSObject
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) AFHTTPRequestOperationManager* operationManager;
 @property (nonatomic) NSInteger *amountOfAlbums;
 @property (strong, nonatomic) NSMutableArray* dataAboutAlbumsFriends;
+@property (strong, nonatomic) NSMutableArray* linksForSmallPhotos;
 
 +(instancetype)sharedModel;
 -(NSURLRequest*)getRequestForFriendsId;
@@ -34,4 +36,5 @@
 -(void)prepareDataForFriendWithNumber: (NSInteger)number;
 -(void)makeRequestForAlbumForFriendWithNumber:(NSInteger)number;
 -(void)prepareAlbumsForFriendsWithNaumber: (NSInteger)number;
+-(void)makeRequestForFriendWithNumber: (NSInteger)number PhotosFromAlbumWithNumber:(NSInteger)albumNumber ;
 @end
