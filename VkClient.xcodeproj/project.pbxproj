@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		666F8B4D25D2760EBAC6BEF6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86534B2DBDD47609144E3732 /* libPods.a */; };
+		842DE60B1B91E2C200B70B1E /* EEBigPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE60A1B91E2C200B70B1E /* EEBigPhotoViewController.m */; };
+		842DE6121B91E9E300B70B1E /* EECollectionViewCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE6111B91E9E300B70B1E /* EECollectionViewCustomCell.m */; };
+		842DE6161B920DAA00B70B1E /* EETransitionForBigPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE6151B920DAA00B70B1E /* EETransitionForBigPhoto.m */; };
+		842DE6191B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE6181B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m */; };
+		842DE61C1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE61B1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m */; };
 		84B0D7F71B4B1EE1008BC181 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F61B4B1EE1008BC181 /* main.m */; };
 		84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */; };
 		84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */; };
@@ -38,6 +43,16 @@
 
 /* Begin PBXFileReference section */
 		76DADC50FF1753B856A7E5F9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		842DE6091B91E2C200B70B1E /* EEBigPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEBigPhotoViewController.h; sourceTree = "<group>"; };
+		842DE60A1B91E2C200B70B1E /* EEBigPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEBigPhotoViewController.m; sourceTree = "<group>"; };
+		842DE6101B91E9E300B70B1E /* EECollectionViewCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EECollectionViewCustomCell.h; sourceTree = "<group>"; };
+		842DE6111B91E9E300B70B1E /* EECollectionViewCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EECollectionViewCustomCell.m; sourceTree = "<group>"; };
+		842DE6141B920DAA00B70B1E /* EETransitionForBigPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EETransitionForBigPhoto.h; sourceTree = "<group>"; };
+		842DE6151B920DAA00B70B1E /* EETransitionForBigPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EETransitionForBigPhoto.m; sourceTree = "<group>"; };
+		842DE6171B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EETransitionFromBigPhotoToCollectionView.h; sourceTree = "<group>"; };
+		842DE6181B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EETransitionFromBigPhotoToCollectionView.m; sourceTree = "<group>"; };
+		842DE61A1B923B8F00B70B1E /* EEListOfFriensTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEListOfFriensTableViewCell.h; sourceTree = "<group>"; };
+		842DE61B1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEListOfFriensTableViewCell.m; sourceTree = "<group>"; };
 		84B0D7F11B4B1EE1008BC181 /* VkClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B0D7F51B4B1EE1008BC181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B0D7F61B4B1EE1008BC181 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -92,6 +107,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842DE60C1B91E2DB00B70B1E /* EEBigPhotoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				842DE6091B91E2C200B70B1E /* EEBigPhotoViewController.h */,
+				842DE60A1B91E2C200B70B1E /* EEBigPhotoViewController.m */,
+			);
+			name = EEBigPhotoViewController;
+			sourceTree = "<group>";
+		};
+		842DE6131B91E9EC00B70B1E /* EECollectionViewCustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				842DE6101B91E9E300B70B1E /* EECollectionViewCustomCell.h */,
+				842DE6111B91E9E300B70B1E /* EECollectionViewCustomCell.m */,
+			);
+			name = EECollectionViewCustomCell;
+			sourceTree = "<group>";
+		};
+		842DE61D1B923B9400B70B1E /* EEListOfFriensTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				842DE61A1B923B8F00B70B1E /* EEListOfFriensTableViewCell.h */,
+				842DE61B1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m */,
+			);
+			name = EEListOfFriensTableViewCell;
+			sourceTree = "<group>";
+		};
 		84B0D7E81B4B1EE1008BC181 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +162,12 @@
 				84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */,
 				84DF16AA1B57FE8C0092A6FF /* EEVkClientManager.h */,
 				84DF16AB1B57FE8C0092A6FF /* EEVkClientManager.m */,
+				842DE6141B920DAA00B70B1E /* EETransitionForBigPhoto.h */,
+				842DE6151B920DAA00B70B1E /* EETransitionForBigPhoto.m */,
+				842DE6171B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.h */,
+				842DE6181B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m */,
+				842DE61D1B923B9400B70B1E /* EEListOfFriensTableViewCell */,
+				842DE6131B91E9EC00B70B1E /* EECollectionViewCustomCell */,
 				84E575001B7A1A510008F117 /* EEAlbumsCustumCell */,
 				84DF16AD1B580E540092A6FF /* ViewControllers */,
 				84B0D7FE1B4B1EE1008BC181 /* Main.storyboard */,
@@ -186,6 +234,7 @@
 		84DF16AD1B580E540092A6FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				842DE60C1B91E2DB00B70B1E /* EEBigPhotoViewController */,
 				84E575041B7B425D0008F117 /* EECollectionViewController */,
 				84E574FC1B7204680008F117 /* EEAlbumsTableViewController */,
 				84ED02571B6B61E3005D5AE3 /* EEPersonalPageViewController */,
@@ -411,12 +460,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842DE6121B91E9E300B70B1E /* EECollectionViewCustomCell.m in Sources */,
 				84ED02561B6B61DB005D5AE3 /* EEPersonalPageViewController.m in Sources */,
 				84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */,
+				842DE6161B920DAA00B70B1E /* EETransitionForBigPhoto.m in Sources */,
+				842DE6191B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m in Sources */,
 				84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */,
+				842DE60B1B91E2C200B70B1E /* EEBigPhotoViewController.m in Sources */,
 				84E574FB1B72043F0008F117 /* EEAlbumsTableViewController.m in Sources */,
 				84E575031B7B42570008F117 /* EECollectionViewController.m in Sources */,
 				84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */,
+				842DE61C1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m in Sources */,
 				84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */,
 				84E574FF1B7A1A4B0008F117 /* EEAlbumsCustumCell.m in Sources */,
 				84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */,

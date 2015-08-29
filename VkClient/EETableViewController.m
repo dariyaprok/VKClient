@@ -12,6 +12,8 @@
 #import "EEUIColorOwnColors.h"
 #import "EELayerButton.h"
 #import "EEPersonalPageViewController.h"
+#import "Haneke.h"
+#import "EEListOfFriensTableViewCell.h"
 
 //#import "ASIFormDataRequest.h"
 @interface EETableViewController()
@@ -36,17 +38,23 @@
 }
 
 
+
 #pragma mark dataSource methods
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString* cellIdentifier = @"cell_identifier";
-    UITableViewCell* cell =  [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString* cellIdentifier = @"cell_identifier";
+    EEListOfFriensTableViewCell* cell =  [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellIdentifier];
+        cell = [[EEListOfFriensTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellIdentifier];
     }
     NSArray* arrayOfData = [[self.manager.dataAboutFriends objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
-    cell.textLabel.textColor = [UIColor vkBlueColor];
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:arrayOfData[2]]]];
+    cell.nameAntLastNameLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
+    //cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
+    //cell.textLabel.textColor = [UIColor vkBlueColor];
+    //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", arrayOfData[6]]]]];
+    [cell.littleImageView hnk_setImageFromURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", arrayOfData[6]]]];
+    if([arrayOfData[4] isEqual:@"1"]) {
+        cell.isOnlineLabel.text = @"Online";
+    }
     return cell;
 }
 
@@ -60,24 +68,31 @@
     [self.manager prepareDataForFriendWithNumber:indexPath.row];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.manager.delegate = self;
     [self.manager makeRequestForAlbumForFriendWithNumber:indexPath.row];
 }
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-                  willDecelerate:(BOOL)decelerate {
-    CGPoint offset = scrollView.contentOffset;
-    CGRect bounds = scrollView.bounds;
-    CGSize size = scrollView.contentSize;
-    UIEdgeInsets inset = scrollView.contentInset;
-    float y = offset.y + bounds.size.height - inset.bottom;
-    float h = size.height;
-    float reload_distance = 10;
-    if(y > h + reload_distance) {
-    [self.manager makeRequestForNameAndLastName];
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == [self.manager getNumberOfFriends] - 1) {
+         [self.manager makeRequestForNameAndLastName];
     }
 }
--(void) succsesLoadedAlbumsWithNumber:(NSInteger)number {
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+//                  willDecelerate:(BOOL)decelerate {
+//    CGPoint offset = scrollView.contentOffset;
+//    CGRect bounds = scrollView.bounds;
+//    CGSize size = scrollView.contentSize;
+//    UIEdgeInsets inset = scrollView.contentInset;
+//    float y = offset.y + bounds.size.height - inset.bottom;
+//    float h = size.height;
+//    float reload_distance = 10;
+//    if(y > h + reload_distance) {
+//    [self.manager makeRequestForNameAndLastName];
+//    }
+//}
+- (void) succsesLoadedAlbumsWithNumber:(NSInteger)number {
     [self performSegueWithIdentifier:@"showAlbumsTableViewControllerSegueIdentifier" sender:self];
     [self.manager prepareAlbumsForFriendsWithNaumber:number];
 }

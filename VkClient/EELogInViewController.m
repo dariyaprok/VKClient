@@ -23,6 +23,7 @@
 
 #pragma mark protocolmethods
 -(void)webViewController: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token {
+
     [self dismissViewControllerAnimated:YES completion:nil];
     [self performSegueWithIdentifier:@"showVebViewControllerSegueIndentifier" sender:self];
     self.manager = [EEVkClientManager sharedModel];

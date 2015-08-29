@@ -10,4 +10,5 @@
 
 @interface UIColor(ownColors)
 +(UIColor*) vkBlueColor;
++(UIColor*)backGroundGreyColor;
 @end

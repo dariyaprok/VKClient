@@ -8,13 +8,33 @@
 
 #import "EECollectionViewController.h"
 #import "Haneke.h"
+#import "EEBigPhotoViewController.h"
+#import "EETransitionForBigPhoto.h"
+
 @interface EECollectionViewController()
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewOfPhotos;
+
 @property (strong, nonatomic) EEVkClientManager* manager;
 @property (strong,nonatomic) UIImageView* bigImageView;
+
+
 @end
 
 @implementation EECollectionViewController
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // Set outself as the navigation controller's delegate so we're asked for a transitioning object
+    self.navigationController.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    // Stop being the navigation controller's delegate
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
+    }
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -37,15 +57,29 @@
     return cell;
     }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+/*-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self.collectionViewOfPhotos cellForItemAtIndexPath:indexPath];
     self.bigImageView = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height)];
     [self addImageWithNumber:indexPath.row];
     
     
+}*/
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.indexOfSelectedPhoto = indexPath.row;
+    [self performSegueWithIdentifier:@"pushBigPhotoCellIdentifier" sender:self];
 }
-static NSInteger numberOfPicture;
--(void)addImageWithNumber: (NSInteger) number {
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 2.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 2.0;
+}
+
+
+/*-(void)addImageWithNumber: (NSInteger) number {
     numberOfPicture = number;
     [self.bigImageView hnk_setImageFromURL: [NSURL URLWithString:self.manager.linksForSmallPhotos[number]]];
     self.bigImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -68,9 +102,9 @@ static NSInteger numberOfPicture;
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.bigImageView addGestureRecognizer:swipeLeft];
     [self.bigImageView addGestureRecognizer:swipeRight];
-}
+}*/
 
--(void)tapped {
+/*-(void)tapped {
     [self.bigImageView removeFromSuperview];
     numberOfPicture = nil;
 }
@@ -94,6 +128,34 @@ static NSInteger numberOfPicture;
             numberOfPicture++;
         }
         [self addImageWithNumber:numberOfPicture];;
+    }
+}*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"pushBigPhotoCellIdentifier"]) {
+        // Get the selected item index path
+        //NSIndexPath *selectedIndexPath = [[self.collectionViewOfPhotos indexPathsForSelectedItems] firstObject];
+        
+        // Set the thing on the view controller we're about to show
+            EEBigPhotoViewController *secondViewController = segue.destinationViewController;
+            secondViewController.linkForBigUrl = self.manager.linksForBigPhotos[self.indexOfSelectedPhoto];
+        
+    }
+}
+
+
+#pragma mark UINavigationControllerDelegate methods
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    // Check if we're transitioning from this view controller to a DSLSecondViewController
+    if (fromVC == self && [toVC isKindOfClass:[EEBigPhotoViewController class]]) {
+        return [[EETransitionForBigPhoto alloc] init];
+    }
+    else {
+        return nil;
     }
 }
 @end

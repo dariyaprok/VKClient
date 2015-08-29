@@ -88,11 +88,11 @@ NSInteger amontOfScrollsDown = 0;
 }
 
 -(void)makeRequestForNameAndLastName {
-    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online", @"access_token":[NSString stringWithFormat:@"%@", self.token]};
+    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online, photo_50", @"access_token":[NSString stringWithFormat:@"%@", self.token]};
     NSInteger amountOfIdsInParamenters = [[self makeStringOfIdsForRequest] componentsSeparatedByString:@","].count;
     [self.operationManager GET:@"https://api.vk.com/method/users.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
         for(NSInteger i = 0;i<amountOfIdsInParamenters; ++i) {
-        NSString* element = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@", [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"first_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"last_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"photo_max"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"sex"],[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"online"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"bdate"]];
+        NSString* element = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@", [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"first_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"last_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"photo_max"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"sex"],[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"online"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"bdate"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"photo_50"]];
         [self.dataAboutFriends addObject:element];
         [self.delegate friendsLoadWithSuccses];
         }

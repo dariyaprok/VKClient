@@ -8,7 +8,7 @@
 
 #import "EEPersonalPageViewController.h"
 #import "EEVkClientManager.h"
-
+#import "Haneke.h"
 @interface EEPersonalPageViewController()
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
@@ -43,8 +43,8 @@
         self.bDayDateLabel.text = nil;
         self.bDayDateStandartTextLabel.text = nil;
     }
-    self.avatarImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:arrayOfData[2]]]];
-    if([arrayOfData[4] isEqual:@"1"]) {
+    [self.avatarImage hnk_setImageFromURL:[NSURL URLWithString:arrayOfData[2]]];
+        if([arrayOfData[4] isEqual:@"1"]) {
         self.offlineOnlineLabel.text = @"Online";
     }
     else {

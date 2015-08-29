@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "EETableViewController.h"
 
-@interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, EEVkClientManagerDelegate>
-
+@interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, EEVkClientManagerDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewOfPhotos;
+@property NSInteger indexOfSelectedPhoto;
 @end
+
