@@ -7,7 +7,9 @@
 //
 
 #import "EEBigPhotoViewController.h"
+#import "EECollectionViewController.h"
 #import "Haneke.h"
+#import "EETransitionFromBigPhotoToCollectionView.h"
 
 @implementation EEBigPhotoViewController
 -(void)viewDidLoad {
@@ -33,4 +35,16 @@
     
 }
 
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    // Check if we're transitioning from this view controller to a DSLFirstViewController
+    if (fromVC == self && [toVC isKindOfClass:[EECollectionViewController class]]) {
+        return [[EETransitionFromBigPhotoToCollectionView alloc] init];
+    }
+    else {
+        return nil;
+    }
+}
 @end

@@ -37,22 +37,84 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-3E-2wg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oi-S5-9lB">
-                                <rect key="frame" x="277" y="550" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0M-kl-HCU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmC-Ts-wE9">
+                                        <rect key="frame" x="8" y="528" width="81" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="81" id="4gD-zc-jcC"/>
+                                            <constraint firstAttribute="width" constant="81" id="Tps-E2-dob"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                        <state key="normal" title="0" image="likeButton">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4gD-zc-jcC"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="4gD-zc-jcC"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h8-8d-EqO">
+                                        <rect key="frame" x="527" y="512" width="65" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="4Ne-lA-76B"/>
+                                            <constraint firstAttribute="height" constant="80" id="vy1-Nt-gpR"/>
+                                        </constraints>
+                                        <state key="normal" image="shareButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="8h8-8d-EqO" firstAttribute="bottom" secondItem="zmC-Ts-wE9" secondAttribute="bottom" id="773-R6-BS3"/>
+                                    <constraint firstItem="zmC-Ts-wE9" firstAttribute="leading" secondItem="f0M-kl-HCU" secondAttribute="leadingMargin" id="EWV-s8-lNg"/>
+                                    <constraint firstItem="zmC-Ts-wE9" firstAttribute="leading" secondItem="f0M-kl-HCU" secondAttribute="leadingMargin" id="El1-dq-vcv"/>
+                                    <constraint firstItem="8h8-8d-EqO" firstAttribute="trailing" secondItem="f0M-kl-HCU" secondAttribute="trailingMargin" id="EsN-WO-gZw"/>
+                                    <constraint firstItem="zmC-Ts-wE9" firstAttribute="bottom" secondItem="f0M-kl-HCU" secondAttribute="bottomMargin" id="dgZ-7O-ZYa"/>
+                                    <constraint firstItem="zmC-Ts-wE9" firstAttribute="bottom" secondItem="f0M-kl-HCU" secondAttribute="bottomMargin" id="yYd-2r-4Pp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EWV-s8-lNg"/>
+                                        <exclude reference="dgZ-7O-ZYa"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="EWV-s8-lNg"/>
+                                        <include reference="dgZ-7O-ZYa"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ACm-3E-2wg" firstAttribute="width" secondItem="f0M-kl-HCU" secondAttribute="width" id="AYq-z4-L27"/>
+                            <constraint firstItem="f0M-kl-HCU" firstAttribute="width" secondItem="LBR-zH-MkM" secondAttribute="width" id="HI3-Si-rCc"/>
+                            <constraint firstItem="f0M-kl-HCU" firstAttribute="height" secondItem="LBR-zH-MkM" secondAttribute="height" id="Kac-Op-5vL"/>
+                            <constraint firstAttribute="centerY" secondItem="f0M-kl-HCU" secondAttribute="centerY" id="Spz-Js-L8M"/>
                             <constraint firstItem="ACm-3E-2wg" firstAttribute="height" secondItem="LBR-zH-MkM" secondAttribute="height" id="Uh1-2Q-4OF"/>
                             <constraint firstAttribute="centerX" secondItem="ACm-3E-2wg" secondAttribute="centerX" id="XnA-jz-g2F"/>
                             <constraint firstItem="ACm-3E-2wg" firstAttribute="width" secondItem="LBR-zH-MkM" secondAttribute="width" id="aWQ-8l-wKY"/>
-                            <constraint firstAttribute="bottom" secondItem="8oi-S5-9lB" secondAttribute="bottom" constant="20" symbolic="YES" id="ff4-kk-WI6"/>
+                            <constraint firstItem="ACm-3E-2wg" firstAttribute="height" secondItem="f0M-kl-HCU" secondAttribute="height" id="m31-zU-GyJ"/>
                             <constraint firstAttribute="centerY" secondItem="ACm-3E-2wg" secondAttribute="centerY" id="qSU-dm-8vY"/>
-                            <constraint firstItem="8oi-S5-9lB" firstAttribute="centerX" secondItem="ACm-3E-2wg" secondAttribute="centerX" id="zcJ-I9-JFA"/>
+                            <constraint firstAttribute="centerX" secondItem="f0M-kl-HCU" secondAttribute="centerX" id="y4a-0g-LSP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AYq-z4-L27"/>
+                                <exclude reference="m31-zU-GyJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="nrL-K6-AkH">
                         <nil key="title"/>
@@ -511,4 +573,8 @@
             <point key="canvasLocation" x="510.99999999999994" y="252.99999999999997"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="likeButton" width="61" height="64"/>
+        <image name="shareButton" width="38" height="53"/>
+    </resources>
 </document>

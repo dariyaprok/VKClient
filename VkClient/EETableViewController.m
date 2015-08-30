@@ -78,20 +78,7 @@
          [self.manager makeRequestForNameAndLastName];
     }
 }
-//
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-//                  willDecelerate:(BOOL)decelerate {
-//    CGPoint offset = scrollView.contentOffset;
-//    CGRect bounds = scrollView.bounds;
-//    CGSize size = scrollView.contentSize;
-//    UIEdgeInsets inset = scrollView.contentInset;
-//    float y = offset.y + bounds.size.height - inset.bottom;
-//    float h = size.height;
-//    float reload_distance = 10;
-//    if(y > h + reload_distance) {
-//    [self.manager makeRequestForNameAndLastName];
-//    }
-//}
+
 - (void) succsesLoadedAlbumsWithNumber:(NSInteger)number {
     [self performSegueWithIdentifier:@"showAlbumsTableViewControllerSegueIdentifier" sender:self];
     [self.manager prepareAlbumsForFriendsWithNaumber:number];

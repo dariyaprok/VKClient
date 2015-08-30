@@ -103,7 +103,7 @@ NSInteger amontOfScrollsDown = 0;
 }
 
 -(void)makeRequestForAlbumForFriendWithNumber:(NSInteger)number {
-    NSDictionary* paramaters = @{@"owner_id": self.mutArrayOfIds[number], @"access_token":[NSString stringWithFormat:@"%@", self.token], @"need_covers":@1};
+    NSDictionary* paramaters = @{@"owner_id": self.mutArrayOfIds[number], @"access_token":[NSString stringWithFormat:@"%@", self.token], @"need_covers":@1, @"extended":@1};
     [self.operationManager GET:@"https://api.vk.com/method/photos.getAlbums" parameters:paramaters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.dataAboutAlbumsFriends = [responseObject valueForKey:@"response"];
         [self.delegate succsesLoadedAlbumsWithNumber:number ];

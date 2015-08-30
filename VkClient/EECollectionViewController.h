@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "EETableViewController.h"
+#import "EECollectionViewCustomCell.h"
 
 @interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, EEVkClientManagerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewOfPhotos;
 @property NSInteger indexOfSelectedPhoto;
+@property (strong, nonatomic) NSIndexPath *indexPathOfCell;
+-(EECollectionViewCustomCell*)cellWithAmountOfSwipe: (NSInteger)amountOfSwipe ;
+
 @end
 

@@ -24,17 +24,28 @@
     UIView *imageSnapshot = [fromViewController.imageView snapshotViewAfterScreenUpdates:NO];
     imageSnapshot.frame = [containerView convertRect:fromViewController.imageView.frame fromView:fromViewController.imageView.superview];
     fromViewController.imageView.hidden = YES;
-    EECollectionViewCustomCell *cell =  [toViewController.collectionViewOfPhotos cellForItemAtIndexPath:[NSIndexPath indexPathForItem:toViewController.indexOfSelectedPhoto inSection:0]];
+    EECollectionViewCustomCell *cell =  [toViewController cellWithAmountOfSwipe:0];
+    UICollectionViewLayoutAttributes *attributes = [toViewController.collectionViewOfPhotos layoutAttributesForItemAtIndexPath:toViewController.indexPathOfCell];
+    CGRect cellRect = attributes.frame;
+    CGRect frameInSuperView = [toViewController.collectionViewOfPhotos convertRect:cellRect toView:[toViewController.collectionViewOfPhotos superview]];
     toViewController.view.frame = [transitionContext finalFrameForViewController:toViewController];
     [containerView insertSubview:toViewController.view belowSubview:fromViewController.view];
     [containerView addSubview:imageSnapshot];
+    
+    double toMakePhotoBigger = (fromViewController.view.frame.size.width/cell.imageView.image.size.width > fromViewController.view.frame.size.height/cell.imageView.image.size.height) ? fromViewController.view.frame.size.height/cell.imageView.image.size.height : fromViewController.view.frame.size.width/cell.imageView.image.size.width;
     
     [UIView animateWithDuration:duration animations:^{
         // Fade out the source view controller
         fromViewController.view.alpha = 0.0;
         
         // Move the image view
-        imageSnapshot.frame = [containerView convertRect:cell.imageView.frame fromView:cell.imageView.superview];
+        
+        imageSnapshot.frame = CGRectMake(frameInSuperView.origin.x + (frameInSuperView.size.width - fromViewController.imageView.frame.size.width/toMakePhotoBigger)/2, frameInSuperView.origin.y - (fromViewController.imageView.frame.size.height/toMakePhotoBigger - cell.frame.size.height)/2, fromViewController.imageView.frame.size.width/toMakePhotoBigger, fromViewController.imageView.frame.size.height/toMakePhotoBigger);
+        double zm1 = (cell.imageView.frame.size.height - cell.imageView.image.size.height)/2;
+        double zm2 = cell.frame.origin.y;
+        double zm = cell.frame.origin.y + (cell.imageView.frame.size.height - cell.imageView.image.size.height)/2;
+        NSLog(@"%f, %f, %f", zm, zm1, zm2);
+        
     } completion:^(BOOL finished) {
         // Clean up
         [imageSnapshot removeFromSuperview];

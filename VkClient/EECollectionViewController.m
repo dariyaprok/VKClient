@@ -10,6 +10,7 @@
 #import "Haneke.h"
 #import "EEBigPhotoViewController.h"
 #import "EETransitionForBigPhoto.h"
+#import "EECollectionViewCustomCell.h"
 
 @interface EECollectionViewController()
 
@@ -67,6 +68,9 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.indexOfSelectedPhoto = indexPath.row;
+    self.indexPathOfCell = indexPath;
+    //self.manager.delegate = self;
+    //[self.manager ]
     [self performSegueWithIdentifier:@"pushBigPhotoCellIdentifier" sender:self];
 }
 
@@ -157,5 +161,19 @@
     else {
         return nil;
     }
+}
+
+-(EECollectionViewCustomCell*)cellWithAmountOfSwipe: (NSInteger)amountOfSwipe {
+    EECollectionViewCustomCell* cell = (EECollectionViewCustomCell*)[self.collectionViewOfPhotos cellForItemAtIndexPath:[NSIndexPath indexPathForRow:(self.indexOfSelectedPhoto + amountOfSwipe) inSection:0]];
+    NSArray* visibleItems = [self.collectionViewOfPhotos visibleCells];
+//    UICollectionViewLayoutAttributes *attributes = [self.collectionViewOfPhotos layoutAttributesForItemAtIndexPath:self.indexPathOfCell];
+ //   CGRect cellRect = attributes.frame;
+//    CGRect cellFrameInSuperview = [self.collectionViewOfPhotos convertRect:cellRect toView:[self.collectionViewOfPhotos superview]];
+    for(EECollectionViewCustomCell* visibleCell in visibleItems) {
+        if([cell.imageView.image isEqual:visibleCell.imageView.image]) {
+            return visibleCell;
+        }
+    }
+    return nil;
 }
 @end

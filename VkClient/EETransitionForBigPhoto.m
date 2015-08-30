@@ -33,6 +33,8 @@
     toViewController.view.alpha = 0;
     toViewController.imageView.hidden = YES;
     
+    
+
     [containerView addSubview:toViewController.view];
     [containerView addSubview:cellImageSnapshot];
     [UIView animateWithDuration:duration animations:^{
