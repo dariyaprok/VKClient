@@ -17,7 +17,7 @@
 @end
 
 @implementation EEOauthWebViewController
-static NSString* const autorizeUrlString = @"https://oauth.vk.com/authorize?client_id=4985115&redirect_uri=https://vk.com/feed&scope=129&display=mobile&response_type=token";
+static NSString* const autorizeUrlString = @"https://oauth.vk.com/authorize?client_id=4985115&redirect_uri=https://vk.com/feed&scope=8192&display=mobile&response_type=token";
 
 
 - (void)viewDidLoad {

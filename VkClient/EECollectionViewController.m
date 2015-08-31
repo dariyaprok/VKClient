@@ -68,7 +68,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.indexOfSelectedPhoto = indexPath.row;
-    self.indexPathOfCell = indexPath;
+    //self.indexPathOfCell = indexPath;
     //self.manager.delegate = self;
     //[self.manager ]
     [self performSegueWithIdentifier:@"pushBigPhotoCellIdentifier" sender:self];
@@ -143,6 +143,7 @@
         // Set the thing on the view controller we're about to show
             EEBigPhotoViewController *secondViewController = segue.destinationViewController;
             secondViewController.linkForBigUrl = self.manager.linksForBigPhotos[self.indexOfSelectedPhoto];
+        secondViewController.indexOfPhoto = self.indexOfSelectedPhoto;
         
     }
 }
@@ -164,16 +165,17 @@
 }
 
 -(EECollectionViewCustomCell*)cellWithAmountOfSwipe: (NSInteger)amountOfSwipe {
-    EECollectionViewCustomCell* cell = (EECollectionViewCustomCell*)[self.collectionViewOfPhotos cellForItemAtIndexPath:[NSIndexPath indexPathForRow:(self.indexOfSelectedPhoto + amountOfSwipe) inSection:0]];
-    NSArray* visibleItems = [self.collectionViewOfPhotos visibleCells];
+    //EECollectionViewCustomCell* cell =
+    return (EECollectionViewCustomCell*)[self.collectionViewOfPhotos cellForItemAtIndexPath:[NSIndexPath indexPathForRow:(self.indexOfSelectedPhoto + amountOfSwipe) inSection:0]];
+//    NSArray* visibleItems = [self.collectionViewOfPhotos visibleCells];
 //    UICollectionViewLayoutAttributes *attributes = [self.collectionViewOfPhotos layoutAttributesForItemAtIndexPath:self.indexPathOfCell];
  //   CGRect cellRect = attributes.frame;
 //    CGRect cellFrameInSuperview = [self.collectionViewOfPhotos convertRect:cellRect toView:[self.collectionViewOfPhotos superview]];
-    for(EECollectionViewCustomCell* visibleCell in visibleItems) {
-        if([cell.imageView.image isEqual:visibleCell.imageView.image]) {
-            return visibleCell;
-        }
-    }
-    return nil;
+//    for(EECollectionViewCustomCell* visibleCell in visibleItems) {
+//        if([cell.imageView.image isEqual:visibleCell.imageView.image]) {
+//            return visibleCell;
+//        }
+ //   }
+//    return nil;
 }
 @end

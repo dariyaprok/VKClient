@@ -12,5 +12,10 @@
 
 @interface EEBigPhotoViewController : UIViewController <UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *viewWithButtons;
+@property (weak, nonatomic) IBOutlet UIButton *likesButton;
+@property (weak, nonatomic) IBOutlet UIButton *sharingButton;
 @property (strong, nonatomic) NSString* linkForBigUrl;
+@property  NSInteger indexOfPhoto;
+@property NSInteger amountOfSwipes;
 @end

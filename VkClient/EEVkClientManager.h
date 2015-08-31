@@ -14,6 +14,8 @@
 -(void)setPosition: (NSInteger)position;
 -(void)succsesLoadedAlbumsWithNumber:(NSInteger)number;
 -(void)photosLoadedWithSuccses;
+
+
 @end
 
 @interface EEVkClientManager : NSObject
@@ -26,6 +28,10 @@
 @property (strong, nonatomic) NSMutableArray* dataAboutAlbumsFriends;
 @property (strong, nonatomic) NSMutableArray* linksForSmallPhotos;
 @property (strong, nonatomic) NSMutableArray* linksForBigPhotos;
+@property (strong, nonatomic) NSMutableArray* infoAboutLikes;
+@property (strong, nonatomic) NSMutableArray* idsOfPhotos;
+@property NSInteger numberOfFriendSelected;
+
 
 +(instancetype)sharedModel;
 -(NSURLRequest*)getRequestForFriendsId;
@@ -38,4 +44,7 @@
 -(void)makeRequestForAlbumForFriendWithNumber:(NSInteger)number;
 -(void)prepareAlbumsForFriendsWithNaumber: (NSInteger)number;
 -(void)makeRequestForFriendWithNumber: (NSInteger)number PhotosFromAlbumWithNumber:(NSInteger)albumNumber ;
+-(void)makeRquestForLogOut;
+-(void) didLikePhotoWithNumber: (NSInteger)number;
+
 @end

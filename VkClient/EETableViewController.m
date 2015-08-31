@@ -25,6 +25,9 @@
 
 @implementation EETableViewController
 
+- (IBAction)logOutButtonPressed:(id)sender {
+    [self.manager makeRquestForLogOut];
+}
 
 -(void)viewDidLoad {
     //NSString* responseString;
@@ -70,6 +73,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.manager.delegate = self;
+    self.manager.numberOfFriendSelected = indexPath.row;
     [self.manager makeRequestForAlbumForFriendWithNumber:indexPath.row];
 }
 

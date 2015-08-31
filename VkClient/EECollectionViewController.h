@@ -14,7 +14,7 @@
 @interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, EEVkClientManagerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewOfPhotos;
 @property NSInteger indexOfSelectedPhoto;
-@property (strong, nonatomic) NSIndexPath *indexPathOfCell;
+//@property (strong, nonatomic) NSIndexPath *indexPathOfCell;
 -(EECollectionViewCustomCell*)cellWithAmountOfSwipe: (NSInteger)amountOfSwipe ;
 
 @end
