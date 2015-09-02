@@ -22,7 +22,7 @@
     
     // Get a snapshot of the thing cell we're transitioning from
     EECollectionViewCustomCell *cell = (EECollectionViewCustomCell*)[fromViewController.collectionViewOfPhotos cellForItemAtIndexPath:[[fromViewController.collectionViewOfPhotos indexPathsForSelectedItems] firstObject]];
-    toViewController.indexOfPhoto = ((NSIndexPath*)[[fromViewController.collectionViewOfPhotos indexPathsForSelectedItems] firstObject]).row;
+    //toViewController.indexOfPhoto = ((NSIndexPath*)[[fromViewController.collectionViewOfPhotos indexPathsForSelectedItems] firstObject]).row;
     UIView *cellImageSnapshot = [cell.imageView snapshotViewAfterScreenUpdates:NO];
     cellImageSnapshot.frame = [containerView convertRect:cell.imageView.frame fromView:cell.imageView.superview];
     cell.imageView.hidden = YES;

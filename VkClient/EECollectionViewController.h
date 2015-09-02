@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "EETableViewController.h"
 #import "EECollectionViewCustomCell.h"
+#import "EEPhoto.h"
 
 @interface EECollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, EEVkClientManagerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewOfPhotos;

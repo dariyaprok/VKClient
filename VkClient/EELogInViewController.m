@@ -21,16 +21,17 @@
     }
 }
 
-#pragma mark protocolmethods
--(void)webViewController: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token {
+#pragma mark - EEWebInOauthViewController delegates
+-(void)EEWebInOauthViewControllerDelegate: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token {
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [viewController dismissViewControllerAnimated:YES completion:nil];
     [self performSegueWithIdentifier:@"showVebViewControllerSegueIndentifier" sender:self];
     self.manager = [EEVkClientManager sharedModel];
     self.manager.token = token;
     
 }
--(void)webViewController:(EEOauthWebViewController*)viewController didFailLoadWithError:(NSError*)error {
+
+-(void)EEWebInOauthViewControllerDelegate:(EEOauthWebViewController*)viewController didFailLoadWithError:(NSError*)error {
     UIAlertView* message;
     message = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Sorry, you didn't log in" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
     [message show];

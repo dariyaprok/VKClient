@@ -11,17 +11,16 @@
 #pragma mark - EEViewControllerDelegate
 
 @class EEOauthWebViewController;
-@protocol EEWebInOauthViewControllerDelegate  <NSObject>
 
+@protocol EEWebInOauthViewControllerDelegate  <NSObject>
 @optional
--(void)webViewController:(EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token;
--(void)webViewController:(EEOauthWebViewController*)viewController didFailLoadWithError:(NSError*)error;
+-(void)EEWebInOauthViewControllerDelegate:(EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token;
+-(void)EEWebInOauthViewControllerDelegate:(EEOauthWebViewController*)viewController didFailLoadWithError:(NSError*)error;
 
 @end
 
 @interface EEOauthWebViewController : UIViewController <UIWebViewDelegate>
 @property (nonatomic, weak) id <EEWebInOauthViewControllerDelegate> delegate;
-
 
 @end
 

@@ -13,7 +13,7 @@
 //@end
 
 @interface EEPersonalPageViewController : UIViewController <EEVkClientManagerDelegate>
-@property NSInteger positionOfFriend;
+//@property NSInteger positionOfFriend;
 @property (strong, nonatomic) EEVkClientManager* manager;
 //@property (weak, nonatomic) id <EEPersonalPageViewControllerDelegate> delegate;
 @end

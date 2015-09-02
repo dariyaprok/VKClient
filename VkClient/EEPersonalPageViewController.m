@@ -29,22 +29,23 @@
     return self;
 }
 -(void)setPosition:(NSInteger)position {
-    self.positionOfFriend = position;
+    //self.positionOfFriend = position;
+    self.manager.numberOfSelectedFriend = position;
 }
 
 -(void)viewDidLoad {
-    NSArray* arrayOfData = [self.manager.dataAboutFriends[(int)self.positionOfFriend] componentsSeparatedByString:@","];
-    self.firstNameLabel.text = arrayOfData[0];
-    self.lastNameLabel.text = arrayOfData[1];
-    if(![arrayOfData[5] isEqualToString:@"(null)"]) {
-    self.bDayDateLabel.text = [self stringOfBdayDate:arrayOfData[5]];
+    //NSArray* arrayOfData = [self.manager.dataAboutFriends[self.manager.numberOfSelectedFriend] componentsSeparatedByString:@","];
+    self.firstNameLabel.text =  ((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).name;
+    self.lastNameLabel.text = ((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).lastName;
+    if([((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).dateOfBirth length] != 0) {
+    self.bDayDateLabel.text = [self stringOfBdayDate:((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).dateOfBirth];
     }
     else {
         self.bDayDateLabel.text = nil;
         self.bDayDateStandartTextLabel.text = nil;
     }
-    [self.avatarImage hnk_setImageFromURL:[NSURL URLWithString:arrayOfData[2]]];
-        if([arrayOfData[4] isEqual:@"1"]) {
+    [self.avatarImage hnk_setImageFromURL:[NSURL URLWithString:((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).linkForPhotoMax]];
+        if([((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).isOnline isEqual:@1]) {
         self.offlineOnlineLabel.text = @"Online";
     }
     else {

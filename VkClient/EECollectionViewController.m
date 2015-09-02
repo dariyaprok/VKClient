@@ -48,13 +48,15 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.manager.linksForSmallPhotos.count;
+    NSInteger toReturn = ((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos.count;
+    return toReturn;
+    //return self.manager.linksForSmallPhotos.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewCellIdentifier" forIndexPath:indexPath];
     UIImageView* photoView = ((UIImageView*)[cell viewWithTag:110]);
-    [photoView hnk_setImageFromURL: [NSURL URLWithString:self.manager.linksForSmallPhotos[indexPath.row]]];
+    [photoView hnk_setImageFromURL: [NSURL URLWithString:((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[indexPath.row]).linkForSmallId]];
     return cell;
     }
 
@@ -67,6 +69,7 @@
 }*/
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.manager.numberOfSelectedPhoto = indexPath.row;
     self.indexOfSelectedPhoto = indexPath.row;
     //self.indexPathOfCell = indexPath;
     //self.manager.delegate = self;
@@ -142,8 +145,9 @@
         
         // Set the thing on the view controller we're about to show
             EEBigPhotoViewController *secondViewController = segue.destinationViewController;
-            secondViewController.linkForBigUrl = self.manager.linksForBigPhotos[self.indexOfSelectedPhoto];
-        secondViewController.indexOfPhoto = self.indexOfSelectedPhoto;
+        secondViewController.openedPhoto = ((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto];
+           // secondViewController.linkForBigUrl = self.manager.linksForBigPhotos[self.indexOfSelectedPhoto];
+        //secondViewController.indexOfPhoto = self.indexOfSelectedPhoto;
         
     }
 }

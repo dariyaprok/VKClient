@@ -21,9 +21,9 @@
 -(void)viewDidLoad {
     self.manager = [EEVkClientManager sharedModel];
     
-    [self reloadLikeButtonWithIndex:self.indexOfPhoto];
+    [self reloadLikeButtonWithIndex:self.manager.numberOfSelectedPhoto];
     
-    [self.imageView hnk_setImageFromURL:[NSURL URLWithString:self.linkForBigUrl]];
+    [self.imageView hnk_setImageFromURL:[NSURL URLWithString:((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).linkForBigId]];
     self.amountOfSwipes = 0;
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped)];
     UISwipeGestureRecognizer* swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipes:)];
@@ -54,8 +54,11 @@
 }
 
 -(void)reloadLikeButtonWithIndex: (NSInteger)index {
-    [self.likesButton setTitle:[[self.manager.infoAboutLikes[self.indexOfPhoto] objectForKey:@"count"] stringValue] forState:UIControlStateNormal];
-    if([[self.manager.infoAboutLikes[self.indexOfPhoto] objectForKey:@"user_likes" ] isEqual:@1]) {
+    //NSNumber *number = [NSNumber numberWithInt:((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes];
+    //NSInteger *amountOfLikes = ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes;
+    //NSString* title = [NSString stringWithFormat:@"%i", amountOfLikes];
+    [self.likesButton setTitle: [((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes stringValue] forState:UIControlStateNormal];
+    if([((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).isUserLiked isEqual:@1]) {
         [self.likesButton setImage: [UIImage imageNamed:@"likeButtonRed"] forState:UIControlStateNormal];
     }
     else {
@@ -64,31 +67,37 @@
     
 }
 - (IBAction)likeButtonTapped:(id)sender {
-    NSInteger amountOfLikes = [[self.manager.infoAboutLikes[self.indexOfPhoto] objectForKey:@"count"] integerValue];
-    if([[self.manager.infoAboutLikes[self.indexOfPhoto] objectForKey:@"user_likes" ] isEqual:@0]) {
-        [self.manager didLikePhotoWithNumber:self.indexOfPhoto];
-        amountOfLikes++;
-        [self.manager.infoAboutLikes[self.indexOfPhoto] setObject:@(amountOfLikes) forKey:@"count"];
-        [self.manager.infoAboutLikes[self.indexOfPhoto] setObject:@(1)forKey:@"user_likes"];
-        [self reloadLikeButtonWithIndex:self.indexOfPhoto];
+    //NSInteger amountOfLikes = ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes;
+    if([((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).isUserLiked isEqual:@0]) {
+        [self.manager didLikePhotoWithNumber:self.manager.numberOfSelectedPhoto];
+        int amauntOfLikes = [((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes intValue];
+        amauntOfLikes++;
+        ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes = [NSNumber numberWithInt:amauntOfLikes];
+        //((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes ++;
+        ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).isUserLiked = @1;
+        //[self.manager.infoAboutLikes[self.manager.numberOfSelectedPhoto] setObject:@(amountOfLikes) forKey:@"count"];
+        //[self.manager.infoAboutLikes[self.manager.numberOfSelectedPhoto] setObject:@(1)forKey:@"user_likes"];
+        [self reloadLikeButtonWithIndex:self.manager.numberOfSelectedPhoto];
     }
 }
 
 -(void)handleSwipes: (UISwipeGestureRecognizer*)sender {
     if(sender.direction == UISwipeGestureRecognizerDirectionLeft) {
-        if(self.indexOfPhoto != self.manager.linksForBigPhotos.count-1){
-            [self.imageView hnk_setImageFromURL:[NSURL URLWithString:self.manager.linksForBigPhotos[self.indexOfPhoto+1]]];
-            self.indexOfPhoto++;
+        if((self.manager.numberOfSelectedPhoto+1) < ((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos.count ){
+            [self.imageView hnk_setImageFromURL:[NSURL URLWithString:((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto+1]).linkForBigId]];
+            self.manager.numberOfSelectedPhoto++;
+            //self.indexOfPhoto++;
             self.amountOfSwipes++;
-            [self reloadLikeButtonWithIndex:self.indexOfPhoto];
+            [self reloadLikeButtonWithIndex:self.manager.numberOfSelectedPhoto];
+             //self.indexOfPhoto];
         }
     }
     else if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
-        if(self.indexOfPhoto != 0){
-            [self.imageView hnk_setImageFromURL:[NSURL URLWithString:self.manager.linksForBigPhotos[self.indexOfPhoto-1]]];
-            self.indexOfPhoto--;
+        if(self.manager.numberOfSelectedPhoto != 0){
+            [self.imageView hnk_setImageFromURL:[NSURL URLWithString:((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto-1]).linkForBigId]];
+            self.manager.numberOfSelectedPhoto--;
             self.amountOfSwipes--;
-            [self reloadLikeButtonWithIndex:self.indexOfPhoto];
+            [self reloadLikeButtonWithIndex:self.manager.numberOfSelectedPhoto];
         }
     }
     

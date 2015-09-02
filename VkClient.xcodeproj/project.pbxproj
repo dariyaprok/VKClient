@@ -13,6 +13,9 @@
 		842DE6161B920DAA00B70B1E /* EETransitionForBigPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE6151B920DAA00B70B1E /* EETransitionForBigPhoto.m */; };
 		842DE6191B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE6181B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m */; };
 		842DE61C1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842DE61B1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m */; };
+		84920C6F1B95DF2400089879 /* EEFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 84920C6E1B95DF2400089879 /* EEFriend.m */; };
+		84920C721B95E09500089879 /* EEAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 84920C711B95E09500089879 /* EEAlbum.m */; };
+		84920C771B95E37900089879 /* EEPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 84920C761B95E37900089879 /* EEPhoto.m */; };
 		84B0D7F71B4B1EE1008BC181 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F61B4B1EE1008BC181 /* main.m */; };
 		84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7F91B4B1EE1008BC181 /* AppDelegate.m */; };
 		84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D7FC1B4B1EE1008BC181 /* EEOauthWebViewController.m */; };
@@ -20,7 +23,7 @@
 		84B0D8021B4B1EE1008BC181 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B0D8011B4B1EE1008BC181 /* Images.xcassets */; };
 		84B0D8051B4B1EE1008BC181 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B0D8031B4B1EE1008BC181 /* LaunchScreen.xib */; };
 		84B0D8111B4B1EE1008BC181 /* VkClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D8101B4B1EE1008BC181 /* VkClientTests.m */; };
-		84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D81E1B4C0DDC008BC181 /* EEUIColorOwnColors.m */; };
+		84B0D81F1B4C0DDC008BC181 /* EEUIColor+OwnColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D81E1B4C0DDC008BC181 /* EEUIColor+OwnColors.m */; };
 		84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D8241B4C3DE4008BC181 /* EELayerButton.m */; };
 		84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B0D82F1B515B3D008BC181 /* EETableViewController.m */; };
 		84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF16A51B57DCEC0092A6FF /* EELogInViewController.m */; };
@@ -53,6 +56,12 @@
 		842DE6181B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EETransitionFromBigPhotoToCollectionView.m; sourceTree = "<group>"; };
 		842DE61A1B923B8F00B70B1E /* EEListOfFriensTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEListOfFriensTableViewCell.h; sourceTree = "<group>"; };
 		842DE61B1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEListOfFriensTableViewCell.m; sourceTree = "<group>"; };
+		84920C6D1B95DF2400089879 /* EEFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEFriend.h; sourceTree = "<group>"; };
+		84920C6E1B95DF2400089879 /* EEFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEFriend.m; sourceTree = "<group>"; };
+		84920C701B95E09500089879 /* EEAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEAlbum.h; sourceTree = "<group>"; };
+		84920C711B95E09500089879 /* EEAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEAlbum.m; sourceTree = "<group>"; };
+		84920C751B95E37900089879 /* EEPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPhoto.h; sourceTree = "<group>"; };
+		84920C761B95E37900089879 /* EEPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEPhoto.m; sourceTree = "<group>"; };
 		84B0D7F11B4B1EE1008BC181 /* VkClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B0D7F51B4B1EE1008BC181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B0D7F61B4B1EE1008BC181 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,8 +75,8 @@
 		84B0D80A1B4B1EE1008BC181 /* VkClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B0D80F1B4B1EE1008BC181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B0D8101B4B1EE1008BC181 /* VkClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VkClientTests.m; sourceTree = "<group>"; };
-		84B0D81D1B4C0DDC008BC181 /* EEUIColorOwnColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEUIColorOwnColors.h; sourceTree = "<group>"; };
-		84B0D81E1B4C0DDC008BC181 /* EEUIColorOwnColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EEUIColorOwnColors.m; sourceTree = "<group>"; };
+		84B0D81D1B4C0DDC008BC181 /* EEUIColor+OwnColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EEUIColor+OwnColors.h"; sourceTree = "<group>"; };
+		84B0D81E1B4C0DDC008BC181 /* EEUIColor+OwnColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EEUIColor+OwnColors.m"; sourceTree = "<group>"; };
 		84B0D8231B4C3DE4008BC181 /* EELayerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EELayerButton.h; sourceTree = "<group>"; };
 		84B0D8241B4C3DE4008BC181 /* EELayerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EELayerButton.m; sourceTree = "<group>"; };
 		84B0D82E1B515B3D008BC181 /* EETableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EETableViewController.h; sourceTree = "<group>"; };
@@ -134,6 +143,33 @@
 			name = EEListOfFriensTableViewCell;
 			sourceTree = "<group>";
 		};
+		84920C731B95E09B00089879 /* EEAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				84920C701B95E09500089879 /* EEAlbum.h */,
+				84920C711B95E09500089879 /* EEAlbum.m */,
+			);
+			name = EEAlbum;
+			sourceTree = "<group>";
+		};
+		84920C741B95E0AE00089879 /* EEFriend */ = {
+			isa = PBXGroup;
+			children = (
+				84920C6D1B95DF2400089879 /* EEFriend.h */,
+				84920C6E1B95DF2400089879 /* EEFriend.m */,
+			);
+			name = EEFriend;
+			sourceTree = "<group>";
+		};
+		84920C781B95E37E00089879 /* EEPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				84920C751B95E37900089879 /* EEPhoto.h */,
+				84920C761B95E37900089879 /* EEPhoto.m */,
+			);
+			name = EEPhoto;
+			sourceTree = "<group>";
+		};
 		84B0D7E81B4B1EE1008BC181 = {
 			isa = PBXGroup;
 			children = (
@@ -166,10 +202,13 @@
 				842DE6151B920DAA00B70B1E /* EETransitionForBigPhoto.m */,
 				842DE6171B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.h */,
 				842DE6181B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m */,
+				84DF16AD1B580E540092A6FF /* ViewControllers */,
+				84920C781B95E37E00089879 /* EEPhoto */,
+				84920C741B95E0AE00089879 /* EEFriend */,
+				84920C731B95E09B00089879 /* EEAlbum */,
 				842DE61D1B923B9400B70B1E /* EEListOfFriensTableViewCell */,
 				842DE6131B91E9EC00B70B1E /* EECollectionViewCustomCell */,
 				84E575001B7A1A510008F117 /* EEAlbumsCustumCell */,
-				84DF16AD1B580E540092A6FF /* ViewControllers */,
 				84B0D7FE1B4B1EE1008BC181 /* Main.storyboard */,
 				84B0D8011B4B1EE1008BC181 /* Images.xcassets */,
 				84B0D8031B4B1EE1008BC181 /* LaunchScreen.xib */,
@@ -216,8 +255,8 @@
 		84B0D8211B4C0E2D008BC181 /* EEUIColorOwnColors */ = {
 			isa = PBXGroup;
 			children = (
-				84B0D81D1B4C0DDC008BC181 /* EEUIColorOwnColors.h */,
-				84B0D81E1B4C0DDC008BC181 /* EEUIColorOwnColors.m */,
+				84B0D81D1B4C0DDC008BC181 /* EEUIColor+OwnColors.h */,
+				84B0D81E1B4C0DDC008BC181 /* EEUIColor+OwnColors.m */,
 			);
 			name = EEUIColorOwnColors;
 			sourceTree = "<group>";
@@ -462,7 +501,7 @@
 			files = (
 				842DE6121B91E9E300B70B1E /* EECollectionViewCustomCell.m in Sources */,
 				84ED02561B6B61DB005D5AE3 /* EEPersonalPageViewController.m in Sources */,
-				84B0D81F1B4C0DDC008BC181 /* EEUIColorOwnColors.m in Sources */,
+				84B0D81F1B4C0DDC008BC181 /* EEUIColor+OwnColors.m in Sources */,
 				842DE6161B920DAA00B70B1E /* EETransitionForBigPhoto.m in Sources */,
 				842DE6191B922A4100B70B1E /* EETransitionFromBigPhotoToCollectionView.m in Sources */,
 				84B0D8251B4C3DE4008BC181 /* EELayerButton.m in Sources */,
@@ -470,11 +509,14 @@
 				84E574FB1B72043F0008F117 /* EEAlbumsTableViewController.m in Sources */,
 				84E575031B7B42570008F117 /* EECollectionViewController.m in Sources */,
 				84B0D7FD1B4B1EE1008BC181 /* EEOauthWebViewController.m in Sources */,
+				84920C721B95E09500089879 /* EEAlbum.m in Sources */,
 				842DE61C1B923B8F00B70B1E /* EEListOfFriensTableViewCell.m in Sources */,
+				84920C771B95E37900089879 /* EEPhoto.m in Sources */,
 				84DF16AC1B57FE8C0092A6FF /* EEVkClientManager.m in Sources */,
 				84E574FF1B7A1A4B0008F117 /* EEAlbumsCustumCell.m in Sources */,
 				84B0D8301B515B3D008BC181 /* EETableViewController.m in Sources */,
 				84DF16A61B57DCEC0092A6FF /* EELogInViewController.m in Sources */,
+				84920C6F1B95DF2400089879 /* EEFriend.m in Sources */,
 				84B0D7FA1B4B1EE1008BC181 /* AppDelegate.m in Sources */,
 				84B0D7F71B4B1EE1008BC181 /* main.m in Sources */,
 			);

@@ -9,7 +9,7 @@
 #import "EETableViewController.h"
 #import "EEVkClientManager.h"
 #import <AFNetworking/AFHTTPRequestOperation.h>
-#import "EEUIColorOwnColors.h"
+#import "EEUIColor+OwnColors.h"
 #import "EELayerButton.h"
 #import "EEPersonalPageViewController.h"
 #import "Haneke.h"
@@ -49,13 +49,13 @@
     if(cell == nil){
         cell = [[EEListOfFriensTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellIdentifier];
     }
-    NSArray* arrayOfData = [[self.manager.dataAboutFriends objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
-    cell.nameAntLastNameLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
+ //   NSArray* arrayOfData = [[self.manager.dataAboutFriends objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
+    cell.nameAntLastNameLabel.text = [NSString stringWithFormat:@"%@ %@", ((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).name, ((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).lastName];
     //cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
     //cell.textLabel.textColor = [UIColor vkBlueColor];
     //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", arrayOfData[6]]]]];
-    [cell.littleImageView hnk_setImageFromURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", arrayOfData[6]]]];
-    if([arrayOfData[4] isEqual:@"1"]) {
+    [cell.littleImageView hnk_setImageFromURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", ((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).linkForAvatar50]]];
+    if([((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).isOnline isEqual:@1]) {
         cell.isOnlineLabel.text = @"Online";
     }
     return cell;
@@ -63,23 +63,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
-    return [self.manager getNumberOfFriends];
+    return self.manager.amountOfLoadedFriends;
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    self.manager.numberOfSelectedFriend = indexPath.row;
     [self performSegueWithIdentifier:@"pushPersonalPageControllerSegueIdrntifier" sender:self];
     [self.manager prepareDataForFriendWithNumber:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.manager.numberOfSelectedFriend = indexPath.row;
     self.manager.delegate = self;
-    self.manager.numberOfFriendSelected = indexPath.row;
     [self.manager makeRequestForAlbumForFriendWithNumber:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == [self.manager getNumberOfFriends] - 1) {
+    if (indexPath.row == self.manager.amountOfLoadedFriends - 1) {
          [self.manager makeRequestForNameAndLastName];
+        
     }
 }
 

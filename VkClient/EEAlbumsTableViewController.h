@@ -11,5 +11,5 @@
 #import "EEVkClientManager.h"
 
 @interface EEAlbumsTableViewController : UIViewController <EEVkClientManagerDelegate, UITableViewDelegate, UITableViewDataSource>
-@property NSInteger positionOfFriendForPhotos;
+//@property NSInteger positionOfFriendForPhotos;
 @end

@@ -8,32 +8,42 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
+#import "EEFriend.h"
+#import "EEAlbum.h"
+#import "EEPhoto.h"
+
 @protocol EEVkClientManagerDelegate <NSObject>
 @optional
 -(void)friendsLoadWithSuccses;
 -(void)setPosition: (NSInteger)position;
 -(void)succsesLoadedAlbumsWithNumber:(NSInteger)number;
 -(void)photosLoadedWithSuccses;
-
-
 @end
 
 @interface EEVkClientManager : NSObject
+@property (strong, nonatomic) NSMutableArray* arrayOfFriends;
+@property NSInteger numberOfSelectedFriend;
+@property NSInteger numberOfSelectedAlbum;
+@property NSInteger numberOfSelectedPhoto;
+@property (nonatomic) NSInteger amountOfLoadedFriends;
+@property NSInteger amountOfLoadedAlbums;
+
+
 @property (strong, nonatomic) NSString* token;
 @property (strong, nonatomic) NSDictionary* responseListOfId;
-@property (strong, nonatomic) NSMutableArray* dataAboutFriends;
+//@property (strong, nonatomic) NSMutableArray* dataAboutFriends;
 @property (nonatomic, weak) id<EEVkClientManagerDelegate> delegate;
 @property (nonatomic, strong) AFHTTPRequestOperationManager* operationManager;
-@property (nonatomic) NSInteger *amountOfAlbums;
-@property (strong, nonatomic) NSMutableArray* dataAboutAlbumsFriends;
-@property (strong, nonatomic) NSMutableArray* linksForSmallPhotos;
-@property (strong, nonatomic) NSMutableArray* linksForBigPhotos;
-@property (strong, nonatomic) NSMutableArray* infoAboutLikes;
-@property (strong, nonatomic) NSMutableArray* idsOfPhotos;
-@property NSInteger numberOfFriendSelected;
-
+//@property (nonatomic) NSInteger *amountOfAlbums;
+//@property (strong, nonatomic) NSMutableArray* dataAboutAlbumsFriends;
+//@property (strong, nonatomic) NSMutableArray* linksForSmallPhotos;
+//@property (strong, nonatomic) NSMutableArray* linksForBigPhotos;
+//@property (strong, nonatomic) NSMutableArray* infoAboutLikes;
+//@property (strong, nonatomic) NSMutableArray* idsOfPhotos;
+//@property NSInteger numberOfFriendSelected;
 
 +(instancetype)sharedModel;
+
 -(NSURLRequest*)getRequestForFriendsId;
 -(void)isError: (NSError*)error;
 -(NSInteger)getNumberOfFriends;

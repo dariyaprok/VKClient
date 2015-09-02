@@ -11,5 +11,4 @@
 
 @interface EETransitionForBigPhoto : NSObject<UIViewControllerAnimatedTransitioning>
 @property BOOL isOpenBigPhoto;
-
 @end
