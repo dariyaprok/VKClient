@@ -29,18 +29,12 @@
 @property NSInteger amountOfLoadedAlbums;
 
 
-@property (strong, nonatomic) NSString* token;
+//@property (strong, nonatomic) NSString* userId;
+//@property (strong, nonatomic) NSString* token;
 @property (strong, nonatomic) NSDictionary* responseListOfId;
-//@property (strong, nonatomic) NSMutableArray* dataAboutFriends;
 @property (nonatomic, weak) id<EEVkClientManagerDelegate> delegate;
 @property (nonatomic, strong) AFHTTPRequestOperationManager* operationManager;
-//@property (nonatomic) NSInteger *amountOfAlbums;
-//@property (strong, nonatomic) NSMutableArray* dataAboutAlbumsFriends;
-//@property (strong, nonatomic) NSMutableArray* linksForSmallPhotos;
-//@property (strong, nonatomic) NSMutableArray* linksForBigPhotos;
-//@property (strong, nonatomic) NSMutableArray* infoAboutLikes;
-//@property (strong, nonatomic) NSMutableArray* idsOfPhotos;
-//@property NSInteger numberOfFriendSelected;
+
 
 +(instancetype)sharedModel;
 

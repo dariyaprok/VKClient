@@ -383,10 +383,10 @@
                         <outlet property="tableView" destination="45E-tc-gDr" id="Efb-Xk-2vN"/>
                         <segue destination="zhD-4U-git" kind="show" identifier="pushPersonalPageControllerSegueIdrntifier" id="GWZ-6D-PDD"/>
                         <segue destination="ZIp-QB-oFw" kind="show" identifier="showAlbumsTableViewControllerSegueIdentifier" id="fq4-iQ-Qzo"/>
+                        <segue destination="Xhb-lp-iFW" kind="show" identifier="logOutSegueIdentifier" id="2ZU-QH-knO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siq-be-zGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="wfA-r3-4Jj"/>
                 <searchDisplayController id="w7D-XH-DdK">
                     <connections>
                         <outlet property="delegate" destination="p9g-Xt-c1A" id="V7o-sH-Z7m"/>
@@ -600,4 +600,7 @@
         <image name="likeButton" width="61" height="64"/>
         <image name="shareButton" width="38" height="53"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2ZU-QH-knO"/>
+    </inferredMetricsTieBreakers>
 </document>

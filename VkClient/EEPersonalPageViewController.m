@@ -29,13 +29,15 @@
     return self;
 }
 -(void)setPosition:(NSInteger)position {
-    //self.positionOfFriend = position;
+    
     self.manager.numberOfSelectedFriend = position;
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    self.manager.delegate = self;
+}
 -(void)viewDidLoad {
-    //NSArray* arrayOfData = [self.manager.dataAboutFriends[self.manager.numberOfSelectedFriend] componentsSeparatedByString:@","];
-    self.firstNameLabel.text =  ((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).name;
+        self.firstNameLabel.text =  ((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).name;
     self.lastNameLabel.text = ((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).lastName;
     if([((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).dateOfBirth length] != 0) {
     self.bDayDateLabel.text = [self stringOfBdayDate:((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).dateOfBirth];

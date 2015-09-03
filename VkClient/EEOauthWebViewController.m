@@ -61,13 +61,19 @@ static NSString* const autorizeUrlString = @"https://oauth.vk.com/authorize?clie
     [self.activityIndicator1 startAnimating];
     if([[request.URL absoluteString] containsString:@"access_token="]) {
         // [self.activityIndicator1 stopAnimating];
-        NSRange tokenRange;
-        
-        tokenRange.location = NSMaxRange([[request.URL absoluteString] rangeOfString:@"access_token="]);
-        tokenRange.length = [[request.URL absoluteString] rangeOfString:@"&expires_in"].location - tokenRange.location;
-        NSString* token = [[request.URL absoluteString] substringWithRange:tokenRange];
-        if ([self.delegate respondsToSelector:@selector(EEWebInOauthViewControllerDelegate:didSuccessWithToken:)]) {
-            [self.delegate EEWebInOauthViewControllerDelegate:self didSuccessWithToken:token];
+       // NSRange tokenRange;
+        NSArray* arrayOfData = [request.URL.absoluteString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=&"]];
+        //tokenRange.location = NSMaxRange([[request.URL absoluteString] rangeOfString:@"access_token="]);
+        //tokenRange.length = [[request.URL absoluteString] rangeOfString:@"&expires_in"].location - tokenRange.location;
+        //NSString* token = [[request.URL absoluteString] substringWithRange:tokenRange];
+        NSString* token = arrayOfData[1];
+        NSString* userId = arrayOfData[5];
+        [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"token"];
+        [[NSUserDefaults standardUserDefaults] setValue:userId forKey:@"id"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        //[[NSUserDefaults standardUserDefaults] synchronize];
+        if ([self.delegate respondsToSelector:@selector(EEWebInOauthViewControllerDelegate:didSuccessWithToken:andId:)]) {
+            [self.delegate EEWebInOauthViewControllerDelegate:self didSuccessWithToken:token andId:userId];
         }
         
     }

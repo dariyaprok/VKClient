@@ -13,5 +13,6 @@
 
 @interface EETableViewController : UIViewController <UITableViewDataSource, EEVkClientManagerDelegate, UIScrollViewDelegate, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

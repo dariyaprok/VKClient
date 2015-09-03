@@ -26,12 +26,14 @@
     self.manager.delegate = self;
     return self;
 }
-
+-(void) viewDidAppear:(BOOL)animated {
+    self.manager.delegate = self;
+}
 
 
 -(void)setPosition:(NSInteger)position {
     self.manager.numberOfSelectedFriend = position;
-    //self.positionOfFriendForPhotos = position;
+
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString* cellIdentifier = @"albums_cell_identifier";
@@ -40,7 +42,7 @@
         cell = [[EEAlbumsCustumCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellIdentifier];
     }
     [cell.coverAlbumImageView hnk_setImageFromURL:[NSURL URLWithString:((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[indexPath.row]).coverId]];
-    //[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self.manager.dataAboutAlbumsFriends[indexPath.row] objectForKey:@"thumb_src"]]]];
+
     cell.nameAlbumLabel.text = [NSString stringWithFormat:@"%@ (%@ photos)", ((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[indexPath.row]).nameOfAlbum, ((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[indexPath.row]).amountOfPhotos ];
     return cell;
 }

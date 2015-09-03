@@ -26,7 +26,7 @@ static EEVkClientManager *sharedModel;
 static NSInteger const amountOfLoadedFriends = 20;
 
 -(NSURLRequest*)getRequestForFriendsId {
-    NSString* urlString = [NSString stringWithFormat:@"https://api.vk.com/method/friends.get?order=mobile&access_token=%@", self.token];
+    NSString* urlString = [NSString stringWithFormat:@"https://api.vk.com/method/friends.get?order=mobile&access_token=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
     NSURL* url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return request;
@@ -71,7 +71,7 @@ static NSInteger const amountOfLoadedFriends = 20;
         self.arrayOfFriends = [[NSMutableArray alloc] init];
     }
     self.operationManager = [AFHTTPRequestOperationManager manager];
-    [self.operationManager GET:@"https://api.vk.com/method/friends.get" parameters:@{@"order":@"mobile", @"access_token":self.token} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.operationManager GET:@"https://api.vk.com/method/friends.get" parameters:@{@"order":@"mobile", @"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //new
         NSArray* responseArray = [responseObject valueForKey:@"response"];
         for(NSInteger i =0; i<responseArray.count; ++i){
@@ -79,11 +79,9 @@ static NSInteger const amountOfLoadedFriends = 20;
         newFriend.idOfFriend = [responseArray objectAtIndex:i];
             [self.arrayOfFriends addObject:newFriend];
         }
-       // NSLog(@"%@", self.arrayOfFriends);
-        //old
+       
         self.responseListOfId = responseObject;
         [self responseIdToIds];
-        //self.dataAboutFriends = [[NSMutableArray alloc] initWithCapacity:self.mutArrayOfIds.count];
         
         [self makeRequestForNameAndLastName];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -107,7 +105,7 @@ NSInteger amontOfScrollsDown = 0;
 }
 
 -(void)makeRequestForNameAndLastName {
-    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online, photo_50", @"access_token":self.token};
+    NSDictionary* parameters = @{@"user_ids":[NSString stringWithFormat:@"%@",[self makeStringOfIdsForRequest]], @"fields":@"sex,bdate,photo_max, online, photo_50", @"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
     NSInteger amountOfIdsInParamenters = [[self makeStringOfIdsForRequest] componentsSeparatedByString:@","].count;
     [self.operationManager GET:@"https://api.vk.com/method/users.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject){
        
@@ -122,9 +120,8 @@ NSInteger amontOfScrollsDown = 0;
             self.amountOfLoadedFriends++;
             
             
-            //old
-        NSString* element = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@", [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"first_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"last_name"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"photo_max"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"sex"],[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"online"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"bdate"], [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"photo_50"]];
-       // [self.dataAboutFriends addObject:element];
+           
+          //  [((EETableViewController*)self.delegate).tableView reloadData];
         [self.delegate friendsLoadWithSuccses];
         }
         amontOfScrollsDown++;
@@ -135,7 +132,7 @@ NSInteger amontOfScrollsDown = 0;
 
 -(void)makeRequestForAlbumForFriendWithNumber:(NSInteger)number {
     ((EEFriend*)self.arrayOfFriends[number]).albums = [NSMutableArray new];
-    NSDictionary* paramaters = @{@"owner_id": self.mutArrayOfIds[number], @"need_covers":@1, @"access_token":self.token};
+    NSDictionary* paramaters = @{@"owner_id": self.mutArrayOfIds[number], @"need_covers":@1, @"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
     [self.operationManager GET:@"https://api.vk.com/method/photos.getAlbums" parameters:paramaters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray* responseArray = [responseObject valueForKey:@"response"];
         for(NSInteger i=0; i<responseArray.count; ++i) {
@@ -158,12 +155,9 @@ NSInteger amontOfScrollsDown = 0;
 }
 
 -(void)makeRequestForFriendWithNumber: (NSInteger)number PhotosFromAlbumWithNumber:(NSInteger)albumNumber  {
-   // self.linksForSmallPhotos = [[NSMutableArray alloc] init];
-    //self.linksForBigPhotos = [[NSMutableArray alloc] init];
-    //self.infoAboutLikes = [[NSMutableArray alloc] init];
-    //self.idsOfPhotos = [[NSMutableArray alloc] init];
+   
     ((EEAlbum*)((EEFriend*)self.arrayOfFriends[number]).albums[albumNumber]).arrayOfPhotos = [NSMutableArray new];
-    NSDictionary* parameters = @{ @"owner_id": ((EEFriend*)self.arrayOfFriends[number]).idOfFriend, @"album_id" : ((EEAlbum*)((EEFriend*)self.arrayOfFriends[number]).albums[albumNumber]).idOfAlbum , @"rev" : @1, @"extended":@1, @"access_token":self.token,};
+    NSDictionary* parameters = @{ @"owner_id": ((EEFriend*)self.arrayOfFriends[number]).idOfFriend, @"album_id" : ((EEAlbum*)((EEFriend*)self.arrayOfFriends[number]).albums[albumNumber]).idOfAlbum , @"rev" : @1, @"extended":@1};//@"access_token":self.token,};
     [self.operationManager GET:@"https://api.vk.com/method/photos.get" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for(NSInteger i =0; i<((NSArray*)[responseObject valueForKey:@"response"]).count; ++i) {
             EEPhoto* newPhoto = [EEPhoto new];
@@ -174,15 +168,7 @@ NSInteger amontOfScrollsDown = 0;
             [((EEAlbum*)((EEFriend*)self.arrayOfFriends[number]).albums[albumNumber]).arrayOfPhotos addObject:newPhoto];
             newPhoto.idOfPhoto = [[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey:@"aid"];
             
-            ///
-        //[self.linksForSmallPhotos addObject:[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey: @"src_small"] ];
-        //    [self.linksForBigPhotos addObject:[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey: @"src_big"] ];
-         //   NSMutableDictionary* objToAdd = [[[[responseObject valueForKey:@"response"] objectAtIndex:i] valueForKey: @"likes"] mutableCopy];
-           // [self.infoAboutLikes addObject:objToAdd];
-        
-        //[self.idsOfPhotos addObject:[[[responseObject valueForKey:@"response"]objectAtIndex:i] valueForKey: @"aid"]];
         }
-        //NSLog(@"%@", self.infoAboutLikes);
         [self.delegate photosLoadedWithSuccses];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self isError:error];
@@ -190,17 +176,19 @@ NSInteger amontOfScrollsDown = 0;
 }
 
 -(void) makeRquestForLogOut {
-    NSString *logout = @"http://api.vk.com/oauth/logout";
-    [self.operationManager GET:logout parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void) didLikePhotoWithNumber: (NSInteger)number {
     NSString* addLikeLink = @"https://api.vk.com/method/likes.add";
-    NSDictionary* parameters = @{@"type":@"photo", @"owner_id": ((EEFriend*)self.arrayOfFriends[self.numberOfSelectedFriend]).idOfFriend,  @"item_id": ((EEPhoto*)((EEAlbum*)((EEFriend*)self.arrayOfFriends[self.numberOfSelectedFriend]).albums[self.numberOfSelectedAlbum]).arrayOfPhotos[number]).idOfPhoto, @"v":@"5.37", @"access_token":self.token,};
+    NSDictionary* parameters = @{@"type":@"photo", @"owner_id": ((EEFriend*)self.arrayOfFriends[self.numberOfSelectedFriend]).idOfFriend,  @"item_id": ((EEPhoto*)((EEAlbum*)((EEFriend*)self.arrayOfFriends[self.numberOfSelectedFriend]).albums[self.numberOfSelectedAlbum]).arrayOfPhotos[number]).idOfPhoto, @"v":@"5.37", @"access_token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
     [self.operationManager GET:addLikeLink parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {

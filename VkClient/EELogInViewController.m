@@ -22,12 +22,12 @@
 }
 
 #pragma mark - EEWebInOauthViewController delegates
--(void)EEWebInOauthViewControllerDelegate: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token {
+-(void)EEWebInOauthViewControllerDelegate: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token andId: (NSString*)userId {
 
     [viewController dismissViewControllerAnimated:YES completion:nil];
     [self performSegueWithIdentifier:@"showVebViewControllerSegueIndentifier" sender:self];
     self.manager = [EEVkClientManager sharedModel];
-    self.manager.token = token;
+    
     
 }
 

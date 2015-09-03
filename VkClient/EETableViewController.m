@@ -15,10 +15,10 @@
 #import "Haneke.h"
 #import "EEListOfFriensTableViewCell.h"
 
-//#import "ASIFormDataRequest.h"
+
 @interface EETableViewController()
 @property (weak, nonatomic) EEVkClientManager* manager;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 
 @end
@@ -27,6 +27,7 @@
 
 - (IBAction)logOutButtonPressed:(id)sender {
     [self.manager makeRquestForLogOut];
+    [self performSegueWithIdentifier:@"logOutSegueIdentifier" sender:self];
 }
 
 -(void)viewDidLoad {
@@ -36,6 +37,9 @@
     [self.manager makeRequestForListOfFriends];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    self.manager.delegate = self;
+}
 -(void)friendsLoadWithSuccses {
     [self.tableView reloadData];
 }
@@ -49,11 +53,9 @@
     if(cell == nil){
         cell = [[EEListOfFriensTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellIdentifier];
     }
- //   NSArray* arrayOfData = [[self.manager.dataAboutFriends objectAtIndex:indexPath.row] componentsSeparatedByString:@","];
+
     cell.nameAntLastNameLabel.text = [NSString stringWithFormat:@"%@ %@", ((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).name, ((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).lastName];
-    //cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", arrayOfData[0], arrayOfData[1]];
-    //cell.textLabel.textColor = [UIColor vkBlueColor];
-    //cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", arrayOfData[6]]]]];
+
     [cell.littleImageView hnk_setImageFromURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@", ((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).linkForAvatar50]]];
     if([((EEFriend*)self.manager.arrayOfFriends[indexPath.row]).isOnline isEqual:@1]) {
         cell.isOnlineLabel.text = @"Online";

@@ -14,7 +14,7 @@
 
 @protocol EEWebInOauthViewControllerDelegate  <NSObject>
 @optional
--(void)EEWebInOauthViewControllerDelegate:(EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token;
+-(void)EEWebInOauthViewControllerDelegate: (EEOauthWebViewController*)viewController didSuccessWithToken:(NSString*)token andId: (NSString*)userId;
 -(void)EEWebInOauthViewControllerDelegate:(EEOauthWebViewController*)viewController didFailLoadWithError:(NSError*)error;
 
 @end

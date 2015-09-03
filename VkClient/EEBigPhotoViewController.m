@@ -37,9 +37,9 @@
     [self.imageView addGestureRecognizer:tap];
     
     
-//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-//    [self.view addGestureRecognizer:pan];
+
 }
+
 
 -(void)tapped {
     [UIView animateWithDuration:0.3 animations:^{
@@ -54,9 +54,7 @@
 }
 
 -(void)reloadLikeButtonWithIndex: (NSInteger)index {
-    //NSNumber *number = [NSNumber numberWithInt:((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes];
-    //NSInteger *amountOfLikes = ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes;
-    //NSString* title = [NSString stringWithFormat:@"%i", amountOfLikes];
+   
     [self.likesButton setTitle: [((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes stringValue] forState:UIControlStateNormal];
     if([((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).isUserLiked isEqual:@1]) {
         [self.likesButton setImage: [UIImage imageNamed:@"likeButtonRed"] forState:UIControlStateNormal];
@@ -67,16 +65,15 @@
     
 }
 - (IBAction)likeButtonTapped:(id)sender {
-    //NSInteger amountOfLikes = ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes;
+    
     if([((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).isUserLiked isEqual:@0]) {
         [self.manager didLikePhotoWithNumber:self.manager.numberOfSelectedPhoto];
         int amauntOfLikes = [((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes intValue];
         amauntOfLikes++;
         ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes = [NSNumber numberWithInt:amauntOfLikes];
-        //((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).amountOfLikes ++;
+       
         ((EEPhoto*)((EEAlbum*)((EEFriend*)self.manager.arrayOfFriends[self.manager.numberOfSelectedFriend]).albums[self.manager.numberOfSelectedAlbum]).arrayOfPhotos[self.manager.numberOfSelectedPhoto]).isUserLiked = @1;
-        //[self.manager.infoAboutLikes[self.manager.numberOfSelectedPhoto] setObject:@(amountOfLikes) forKey:@"count"];
-        //[self.manager.infoAboutLikes[self.manager.numberOfSelectedPhoto] setObject:@(1)forKey:@"user_likes"];
+    
         [self reloadLikeButtonWithIndex:self.manager.numberOfSelectedPhoto];
     }
 }
